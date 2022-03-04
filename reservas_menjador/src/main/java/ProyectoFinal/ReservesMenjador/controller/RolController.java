@@ -29,7 +29,9 @@ public class RolController {
 
 	@GetMapping("/roles/{id}")
 	public Rol ubicaPorID(@PathVariable (name = "id") int id) {
-		return rolSERV.ubicaPorID(id);
+		Rol rol = new Rol();
+		rol = rolSERV.ubicaPorID(id);
+		return rol;
 	}
 
 	@PostMapping("roles/add")

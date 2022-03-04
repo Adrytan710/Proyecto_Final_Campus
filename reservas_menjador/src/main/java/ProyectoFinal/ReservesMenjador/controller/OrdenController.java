@@ -29,7 +29,9 @@ public class OrdenController {
 
 	@GetMapping("/ordenes/{id}")
 	public Orden ubicaPorID(@PathVariable (name = "id") int id) {
-		return ordenSERV.ubicaPorID(id);
+		Orden orden = new Orden();
+		orden = ordenSERV.ubicaPorID(id);
+		return orden;
 	}
 
 	@PostMapping("ordenes/add")

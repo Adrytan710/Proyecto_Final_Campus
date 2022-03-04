@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ProyectoFinal.ReservesMenjador.dto.Plato;
 import ProyectoFinal.ReservesMenjador.services.PlatoServicesImpl;
+import net.bytebuddy.implementation.bind.ArgumentTypeResolver.ParameterIndexToken;
 @RestController
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class PlatoController {
@@ -28,7 +29,9 @@ public class PlatoController {
 
 	@GetMapping("/platos/{id}")
 	public Plato ubicaPorID(@PathVariable (name = "id") int id) {
-		return platoSERV.ubicaPorID(id);
+		Plato plato = new Plato();
+		plato = platoSERV.ubicaPorID(id);
+		return plato;
 	}
 
 	@PostMapping("platos/add")

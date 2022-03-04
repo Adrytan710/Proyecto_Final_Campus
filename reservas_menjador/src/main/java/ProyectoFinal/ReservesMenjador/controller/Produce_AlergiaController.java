@@ -29,7 +29,9 @@ public class Produce_AlergiaController {
 
 	@GetMapping("/producen/{id}")
 	public Produce_Alergia ubicaPorID(@PathVariable (name = "id") int id) {
-		return produceSERV.ubicaPorID(id);
+		Produce_Alergia  alergy = new Produce_Alergia();
+		alergy = produceSERV.ubicaPorID(id);
+		return alergy;
 	}
 
 	@PostMapping("producen/add")

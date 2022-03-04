@@ -30,7 +30,9 @@ public class CategoriaController {
 
 	@GetMapping("/categorias/{id}")
 	public Categoria ubicaPorID(@PathVariable (name = "id") int id) {
-		return categoriaSERVICES.ubicaPorID(id);
+		Categoria category = new Categoria();
+		category = categoriaSERVICES.ubicaPorID(id);
+		return category;
 	}
 
 	@PostMapping("categorias/add")

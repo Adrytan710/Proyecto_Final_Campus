@@ -29,7 +29,9 @@ public class UsuarioController {
 
 	@GetMapping("/usuarios/{id}")
 	public Usuario ubicaPorID(@PathVariable (name = "id") int id) {
-		return usuarioSERV.ubicaPorID(id);
+		Usuario usuario = new Usuario();
+		usuario = usuarioSERV.ubicaPorID(id);
+		return usuario;
 	}
 
 	@PostMapping("usuarios/add")
