@@ -27,7 +27,7 @@ public class AlergiaController {
 		return alergySERV.totalRegistro();
 	}
 	
-	@GetMapping("/alergias{id}")
+	@GetMapping("/alergias/{id}")
 	public Alergia ubicaPorID(@PathVariable (name = "id") int id) {
 		return alergySERV.ubicaPorID(id);
 	}
