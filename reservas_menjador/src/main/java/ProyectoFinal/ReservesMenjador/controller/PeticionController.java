@@ -29,6 +29,7 @@ public class PeticionController {
 
 	@GetMapping("/peticiones/{id}")
 	public Peticion ubicaPorID(@PathVariable (name = "id") int id) {
+		
 		return peticionSERV.ubicaPorID(id);
 	}
 

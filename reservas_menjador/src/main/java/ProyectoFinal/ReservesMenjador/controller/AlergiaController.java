@@ -29,7 +29,9 @@ public class AlergiaController {
 
 	@GetMapping("/alergias/{id}")
 	public Alergia ubicaPorID(@PathVariable (name = "id") int id) {
-		return alergySERV.ubicaPorID(id);
+		Alergia alergy = new Alergia();
+		alergy = alergySERV.ubicaPorID(id);
+		return alergy;
 	}
 
 	@PostMapping("alergias/add")
