@@ -2,14 +2,7 @@ package com.example.demo.dto;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,37 +13,38 @@ public class Alergia {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_alergia;
-	
+	private int id;
+
+	@Column
 	private String nombre;
 	
 	@OneToMany
-	@JoinColumn(name = "id_alergia")
+	@JoinColumn(name = "id")
 	private List<Produce_Alergia> produce_Alergias;
 	
 	@OneToMany
-	@JoinColumn(name = "id_alergia")
+	@JoinColumn(name = "id")
 	private List<Tiene_Alergia> tiene_Alergias;
 	
 	public Alergia() {
 		
 	}
 
-	public Alergia(int id_alergia, String nombre, List<Produce_Alergia> produce_Alergias,
+	public Alergia(int id, String nombre, List<Produce_Alergia> produce_Alergias,
 			List<Tiene_Alergia> tiene_Alergias) {
 		super();
-		this.id_alergia = id_alergia;
+		this.id = id;
 		this.nombre = nombre;
 		this.produce_Alergias = produce_Alergias;
 		this.tiene_Alergias = tiene_Alergias;
 	}
 
-	public int getId_alergia() {
-		return id_alergia;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_alergia(int id_alergia) {
-		this.id_alergia = id_alergia;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -83,7 +77,7 @@ public class Alergia {
 
 	@Override
 	public String toString() {
-		return "Alergia [id_alergia=" + id_alergia + ", nombre=" + nombre + ", produce_Alergias=" + produce_Alergias
+		return "Alergia [id=" + id + ", nombre=" + nombre + ", produce_Alergias=" + produce_Alergias
 				+ ", tiene_Alergias=" + tiene_Alergias + "]";
 	}
 	

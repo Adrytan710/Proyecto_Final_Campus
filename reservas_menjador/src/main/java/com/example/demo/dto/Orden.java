@@ -3,15 +3,7 @@ package com.example.demo.dto;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,8 +13,9 @@ public class Orden {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_orden;
-	
+	private int id;
+
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	@ManyToOne
@@ -30,27 +23,27 @@ public class Orden {
 	private Usuario usuario;
 	
 	@OneToMany
-	@JoinColumn(name = "id_orden")
+	@JoinColumn(name = "id")
 	private List<Peticion> peticion; 
 	
 	public Orden() {
 		
 	}
 
-	public Orden(int id_orden, Date fecha, Usuario usuario, List<Peticion> peticion) {
+	public Orden(int id, Date fecha, Usuario usuario, List<Peticion> peticion) {
 		super();
-		this.id_orden = id_orden;
+		this.id = id;
 		this.fecha = fecha;
 		this.usuario = usuario;
 		this.peticion = peticion;
 	}
 
-	public int getId_orden() {
-		return id_orden;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_orden(int id_orden) {
-		this.id_orden = id_orden;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Date getFecha() {
@@ -81,7 +74,7 @@ public class Orden {
 
 	@Override
 	public String toString() {
-		return "Orden [id_orden=" + id_orden + ", fecha=" + fecha + ", usuario=" + usuario + ", peticion=" + peticion
+		return "Orden [id=" + id + ", fecha=" + fecha + ", usuario=" + usuario + ", peticion=" + peticion
 				+ "]";
 	}
 }

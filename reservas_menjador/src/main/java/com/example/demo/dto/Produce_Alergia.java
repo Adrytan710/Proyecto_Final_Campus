@@ -1,12 +1,6 @@
 package com.example.demo.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "producen")
@@ -14,7 +8,7 @@ public class Produce_Alergia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_alerg_prod;
+	private int id;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_plato")
@@ -28,19 +22,19 @@ public class Produce_Alergia {
 		
 	}
 
-	public Produce_Alergia(int id_alerg_prod, Plato plato, Alergia alergia) {
+	public Produce_Alergia(int id, Plato plato, Alergia alergia) {
 		super();
-		this.id_alerg_prod = id_alerg_prod;
+		this.id = id;
 		this.plato = plato;
 		this.alergia = alergia;
 	}
 
-	public int getId_alerg_prod() {
-		return id_alerg_prod;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_alerg_prod(int id_alerg_prod) {
-		this.id_alerg_prod = id_alerg_prod;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Plato getPlato() {
@@ -61,7 +55,7 @@ public class Produce_Alergia {
 
 	@Override
 	public String toString() {
-		return "Produce_Alergia [id_alerg_prod=" + id_alerg_prod + ", plato=" + plato + ", alergia=" + alergia + "]";
+		return "Produce_Alergia [id=" + id + ", plato=" + plato + ", alergia=" + alergia + "]";
 	}
 	
 	

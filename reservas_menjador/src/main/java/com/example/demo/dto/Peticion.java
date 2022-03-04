@@ -1,12 +1,6 @@
 package com.example.demo.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "realiza_peticiones")
@@ -15,7 +9,7 @@ public class Peticion {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_peticiones;
+	private int id;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_orden")
@@ -29,19 +23,19 @@ public class Peticion {
 		
 	}
 
-	public Peticion(int id_peticiones, Orden orden, Plato plato) {
+	public Peticion(int id, Orden orden, Plato plato) {
 		super();
-		this.id_peticiones = id_peticiones;
+		this.id = id;
 		this.orden = orden;
 		this.plato = plato;
 	}
 
-	public int getId_peticiones() {
-		return id_peticiones;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_peticiones(int id_peticiones) {
-		this.id_peticiones = id_peticiones;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Orden getOrden() {
@@ -62,7 +56,7 @@ public class Peticion {
 
 	@Override
 	public String toString() {
-		return "Peticion [id_peticiones=" + id_peticiones + ", orden=" + orden + ", plato=" + plato + "]";
+		return "Peticion [id=" + id + ", orden=" + orden + ", plato=" + plato + "]";
 	}
 	
 }

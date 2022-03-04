@@ -1,12 +1,6 @@
 package com.example.demo.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tienen")
@@ -14,7 +8,7 @@ public class Tiene_Alergia {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_usu_tiene;
+	private int id;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
@@ -28,19 +22,19 @@ public class Tiene_Alergia {
 		
 	}
 
-	public Tiene_Alergia(int id_usu_tiene, Usuario usuario, Alergia alergia) {
+	public Tiene_Alergia(int id, Usuario usuario, Alergia alergia) {
 		super();
-		this.id_usu_tiene = id_usu_tiene;
+		this.id = id;
 		this.usuario = usuario;
 		this.alergia = alergia;
 	}
 
-	public int getId_usu_tiene() {
-		return id_usu_tiene;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_usu_tiene(int id_usu_tiene) {
-		this.id_usu_tiene = id_usu_tiene;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Usuario getUsuario() {
@@ -61,6 +55,6 @@ public class Tiene_Alergia {
 
 	@Override
 	public String toString() {
-		return "Tiene_Alergia [id_usu_tiene=" + id_usu_tiene + ", usuario=" + usuario + ", alergia=" + alergia + "]";
+		return "Tiene_Alergia [id=" + id + ", usuario=" + usuario + ", alergia=" + alergia + "]";
 	}
 }

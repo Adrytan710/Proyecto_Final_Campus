@@ -2,17 +2,7 @@ package com.example.demo.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.ValueGenerationType;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,31 +12,32 @@ public class Rol {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private int id_rol;
+	private int id;
 	
+	@Column
 	private String nombre;
 	
 	@OneToMany
-	@JoinColumn(name = "id_rol")
+	@JoinColumn(name = "id")
 	private List<Usuario> usuarios;
 	
 	public Rol() {
 		
 	}
 
-	public Rol(int id_rol, String nombre, List<Usuario> usuarios) {
+	public Rol(int id, String nombre, List<Usuario> usuarios) {
 		super();
-		this.id_rol = id_rol;
+		this.id = id;
 		this.nombre = nombre;
 		this.usuarios = usuarios;
 	}
 
-	public int getId_rol() {
-		return id_rol;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_rol(int id_rol) {
-		this.id_rol = id_rol;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -69,7 +60,7 @@ public class Rol {
 
 	@Override
 	public String toString() {
-		return "Rol [id_rol=" + id_rol + ", nombre=" + nombre + ", usuarios=" + usuarios
+		return "Rol [id=" + id + ", nombre=" + nombre + ", usuarios=" + usuarios
 				+ "]";
 	}
 	

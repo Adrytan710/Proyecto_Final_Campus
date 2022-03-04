@@ -2,16 +2,7 @@ package com.example.demo.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,10 +12,13 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_usuario;
+	private int id;
 	
+	@Column
 	private String usuario;
+	@Column
 	private String pass_usuario;
+	@Column
 	private String email;
 	
 	@ManyToOne
@@ -32,21 +26,21 @@ public class Usuario {
 	private Rol rol;
 	
 	@OneToMany
-	@JoinColumn(name = "id_usuario")
+	@JoinColumn(name = "id")
 	private List<Orden> ordenes;
 	
 	@OneToMany
-	@JoinColumn(name = "id_usuario")
+	@JoinColumn(name = "id")
 	private List<Tiene_Alergia> alergias;
 	
 	public Usuario() {
 		
 	}
 
-	public Usuario(int id_usuario, String usuario, String pass_usuario, String email, Rol rol, List<Orden> ordenes,
+	public Usuario(int id, String usuario, String pass_usuario, String email, Rol rol, List<Orden> ordenes,
 			List<Tiene_Alergia> alergias) {
 		super();
-		this.id_usuario = id_usuario;
+		this.id = id;
 		this.usuario = usuario;
 		this.pass_usuario = pass_usuario;
 		this.email = email;
@@ -55,12 +49,12 @@ public class Usuario {
 		this.alergias = alergias;
 	}
 
-	public int getId_usuario() {
-		return id_usuario;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getUsuario() {
@@ -117,7 +111,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id_usuario=" + id_usuario + ", usuario=" + usuario + ", pass_usuario=" + pass_usuario
+		return "Usuario [id=" + id + ", usuario=" + usuario + ", pass_usuario=" + pass_usuario
 				+ ", email=" + email + ", rol=" + rol + ", ordenes=" + ordenes + ", alergias=" + alergias + "]";
 	}
 

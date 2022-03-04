@@ -2,14 +2,7 @@ package com.example.demo.dto;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,30 +12,31 @@ public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_categoria;
+	private int id;
+	@Column
 	private String nombre;
 	
 	@OneToMany
-	@JoinColumn(name = "id_categoria")
+	@JoinColumn(name = "id")
 	private List<Plato> platos;
 	
 	public Categoria() {
 		
 	}
 
-	public Categoria(int id_categoria, String nombre, List<Plato> platos) {
+	public Categoria(int id, String nombre, List<Plato> platos) {
 		super();
-		this.id_categoria = id_categoria;
+		this.id = id;
 		this.nombre = nombre;
 		this.platos = platos;
 	}
 
-	public int getId_categoria() {
-		return id_categoria;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_categoria(int id_categoria) {
-		this.id_categoria = id_categoria;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -65,7 +59,7 @@ public class Categoria {
 
 	@Override
 	public String toString() {
-		return "Categoria [id_categoria=" + id_categoria + ", nombre=" + nombre + ", platos=" + platos + "]";
+		return "Categoria [id=" + id + ", nombre=" + nombre + ", platos=" + platos + "]";
 	}
 	
 }

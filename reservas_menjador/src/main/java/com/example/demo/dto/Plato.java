@@ -3,15 +3,7 @@ package com.example.demo.dto;
 import java.sql.Blob;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,8 +14,11 @@ public class Plato {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_plato;
+	private int id;
+	
+	@Column
 	private String nombre;
+	@Column
 	private Blob foto; ///VERIFICAR SI DE ESTA MANERA SE TRABAJA
 	
 	@ManyToOne
@@ -31,28 +26,28 @@ public class Plato {
 	private Categoria categoria;
 	
 	@OneToMany
-	@JoinColumn(name = "id_plato")
+	@JoinColumn(name = "id")
 	private List<Peticion> peticions;
 	
 	public Plato() {
 		
 	}
 
-	public Plato(int id_plato, String nombre, Blob foto, Categoria categoria, List<Peticion> peticions) {
+	public Plato(int id, String nombre, Blob foto, Categoria categoria, List<Peticion> peticions) {
 		super();
-		this.id_plato = id_plato;
+		this.id = id;
 		this.nombre = nombre;
 		this.foto = foto;
 		this.categoria = categoria;
 		this.peticions = peticions;
 	}
 
-	public int getId_plato() {
-		return id_plato;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_plato(int id_plato) {
-		this.id_plato = id_plato;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -91,7 +86,7 @@ public class Plato {
 
 	@Override
 	public String toString() {
-		return "Plato [id_plato=" + id_plato + ", nombre=" + nombre + ", foto=" + foto + ", categoria=" + categoria
+		return "Plato [id=" + id + ", nombre=" + nombre + ", foto=" + foto + ", categoria=" + categoria
 				+ ", peticions=" + peticions + "]";
 	}
 	
