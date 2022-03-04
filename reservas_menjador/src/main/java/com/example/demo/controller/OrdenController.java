@@ -19,39 +19,39 @@ import com.example.demo.services.OrdenServicesImpl;
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class OrdenController {
 
-		@Autowired
-		OrdenServicesImpl ordenSERV;
-		
-			@GetMapping("/ordenes")
-			public List<Orden> totalRegistros(){
-				return ordenSERV.totalRegistro();
-			}
-			
-			@GetMapping("/ordenes/{id}")
-			public Orden ubicaPorID(@PathVariable (name = "id") int id) {
-				return ordenSERV.ubicaPorID(id);
-			}
-			
-			@PostMapping("ordenes/add")
-			public Orden agregaRegistro(@RequestBody Orden orden) {
-				return ordenSERV.agregaRegistro(orden);
-			}
-			
-			@PutMapping("ordenes/{id}/agrega")
-			public Orden actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Orden orden) {
-				Orden ordenSEL = new Orden();
-				Orden ordenUPDATE = new Orden();
-				ordenSEL = ordenSERV.ubicaPorID(id);
-				ordenSEL.setFecha(orden.getFecha());
-				ordenSEL.setPeticion(orden.getPeticion());
-				ordenSEL.setUsuario(orden.getUsuario());
-				ordenUPDATE = ordenSEL;
-				
-				return ordenUPDATE;
-			}
-			
-			@DeleteMapping("ordenes/{id}/delete")
-			public void eliminaRegistro(@PathVariable (name = "id") int id) {
-				ordenSERV.eliminaRegistroPorID(id);
-			}
+	@Autowired
+	OrdenServicesImpl ordenSERV;
+
+	@GetMapping("/ordenes")
+	public List<Orden> totalRegistros(){
+		return ordenSERV.totalRegistro();
+	}
+
+	@GetMapping("/ordenes/{id}")
+	public Orden ubicaPorID(@PathVariable (name = "id") int id) {
+		return ordenSERV.ubicaPorID(id);
+	}
+
+	@PostMapping("ordenes/add")
+	public Orden agregaRegistro(@RequestBody Orden orden) {
+		return ordenSERV.agregaRegistro(orden);
+	}
+
+	@PutMapping("ordenes/{id}/agrega")
+	public Orden actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Orden orden) {
+		Orden ordenSEL = new Orden();
+		Orden ordenUPDATE = new Orden();
+		ordenSEL = ordenSERV.ubicaPorID(id);
+		ordenSEL.setFecha(orden.getFecha());
+		ordenSEL.setPeticion(orden.getPeticion());
+		ordenSEL.setUsuario(orden.getUsuario());
+		ordenUPDATE = ordenSEL;
+
+		return ordenUPDATE;
+	}
+
+	@DeleteMapping("ordenes/{id}/delete")
+	public void eliminaRegistro(@PathVariable (name = "id") int id) {
+		ordenSERV.eliminaRegistroPorID(id);
+	}
 }

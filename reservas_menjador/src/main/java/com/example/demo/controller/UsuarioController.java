@@ -19,42 +19,42 @@ import com.example.demo.services.UsuarioServicesImpl;
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class UsuarioController {
 
-								@Autowired
-								UsuarioServicesImpl usuarioSERV;
-								
-									@GetMapping("/usuarios")
-									public List<Usuario> totalRegistros(){
-										return usuarioSERV.totalRegistro();
-									}
-									
-									@GetMapping("/usuarios/{id}")
-									public Usuario ubicaPorID(@PathVariable (name = "id") int id) {
-										return usuarioSERV.ubicaPorID(id);
-									}
-									
-									@PostMapping("usuarios/add")
-									public Usuario agregaRegistro(@RequestBody Usuario usuario) {
-										return usuarioSERV.agregaRegistro(usuario);
-									}
-									
-									@PutMapping("usuarios/{id}/agrega")
-									public Usuario actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Usuario usuario) {
-										Usuario usuarioSEL = new Usuario();
-										Usuario usuarioUPDATE = new Usuario();
-										usuarioSEL = usuarioSERV.ubicaPorID(id);
-										usuarioSEL.setUsuario(usuario.getUsuario());
-										usuarioSEL.setPass_usuario(usuario.getPass_usuario());
-										usuarioSEL.setEmail(usuario.getEmail());
-										usuarioSEL.setRol(usuario.getRol());
-										usuarioSEL.setOrdenes(usuario.getOrdenes());
-										usuarioSEL.setAlergias(usuario.getAlergias());
-										usuarioUPDATE = usuarioSEL;
-										
-										return usuarioUPDATE;
-									}
-									
-									@DeleteMapping("usuarios/{id}/delete")
-									public void eliminaRegistro(@PathVariable (name = "id") int id) {
-										usuarioSERV.eliminaRegistroPorID(id);
-									}
+	@Autowired
+	UsuarioServicesImpl usuarioSERV;
+
+	@GetMapping("/usuarios")
+	public List<Usuario> totalRegistros(){
+		return usuarioSERV.totalRegistro();
+	}
+
+	@GetMapping("/usuarios/{id}")
+	public Usuario ubicaPorID(@PathVariable (name = "id") int id) {
+		return usuarioSERV.ubicaPorID(id);
+	}
+
+	@PostMapping("usuarios/add")
+	public Usuario agregaRegistro(@RequestBody Usuario usuario) {
+		return usuarioSERV.agregaRegistro(usuario);
+	}
+
+	@PutMapping("usuarios/{id}/agrega")
+	public Usuario actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Usuario usuario) {
+		Usuario usuarioSEL = new Usuario();
+		Usuario usuarioUPDATE = new Usuario();
+		usuarioSEL = usuarioSERV.ubicaPorID(id);
+		usuarioSEL.setUsuario(usuario.getUsuario());
+		usuarioSEL.setPass_usuario(usuario.getPass_usuario());
+		usuarioSEL.setEmail(usuario.getEmail());
+		usuarioSEL.setRol(usuario.getRol());
+		usuarioSEL.setOrdenes(usuario.getOrdenes());
+		usuarioSEL.setAlergias(usuario.getAlergias());
+		usuarioUPDATE = usuarioSEL;
+
+		return usuarioUPDATE;
+	}
+
+	@DeleteMapping("usuarios/{id}/delete")
+	public void eliminaRegistro(@PathVariable (name = "id") int id) {
+		usuarioSERV.eliminaRegistroPorID(id);
+	}
 }

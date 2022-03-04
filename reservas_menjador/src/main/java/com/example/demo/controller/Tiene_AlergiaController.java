@@ -18,38 +18,38 @@ import com.example.demo.services.Tiene_AlergiaServicesImpl;
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class Tiene_AlergiaController {
 
-							@Autowired
-							Tiene_AlergiaServicesImpl tieneSERV;
-							
-								@GetMapping("/tienen")
-								public List<Tiene_Alergia> totalRegistros(){
-									return tieneSERV.totalRegistro();
-								}
-								
-								@GetMapping("/tienen/{id}")
-								public Tiene_Alergia ubicaPorID(@PathVariable (name = "id") int id) {
-									return tieneSERV.ubicaPorID(id);
-								}
-								
-								@PostMapping("tienen/add")
-								public Tiene_Alergia agregaRegistro(@RequestBody Tiene_Alergia tiene) {
-									return tieneSERV.agregaRegistro(tiene);
-								}
-								
-								@PutMapping("tienen/{id}/agrega")
-								public Tiene_Alergia actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Tiene_Alergia tiene) {
-									Tiene_Alergia tieneSEL = new Tiene_Alergia();
-									Tiene_Alergia tieneUPDATE = new Tiene_Alergia();
-									tieneSEL = tieneSERV.ubicaPorID(id);
-									tieneSEL.setAlergia(tiene.getAlergia());
-									tieneSEL.setUsuario(tiene.getUsuario());
-									tieneUPDATE = tieneSEL;
-									
-									return tieneUPDATE;
-								}
-								
-								@DeleteMapping("tienen/{id}/delete")
-								public void eliminaRegistro(@PathVariable (name = "id") int id) {
-									tieneSERV.eliminaRegistroPorID(id);
-								}
+	@Autowired
+	Tiene_AlergiaServicesImpl tieneSERV;
+
+	@GetMapping("/tienen")
+	public List<Tiene_Alergia> totalRegistros(){
+		return tieneSERV.totalRegistro();
+	}
+
+	@GetMapping("/tienen/{id}")
+	public Tiene_Alergia ubicaPorID(@PathVariable (name = "id") int id) {
+		return tieneSERV.ubicaPorID(id);
+	}
+
+	@PostMapping("tienen/add")
+	public Tiene_Alergia agregaRegistro(@RequestBody Tiene_Alergia tiene) {
+		return tieneSERV.agregaRegistro(tiene);
+	}
+
+	@PutMapping("tienen/{id}/agrega")
+	public Tiene_Alergia actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Tiene_Alergia tiene) {
+		Tiene_Alergia tieneSEL = new Tiene_Alergia();
+		Tiene_Alergia tieneUPDATE = new Tiene_Alergia();
+		tieneSEL = tieneSERV.ubicaPorID(id);
+		tieneSEL.setAlergia(tiene.getAlergia());
+		tieneSEL.setUsuario(tiene.getUsuario());
+		tieneUPDATE = tieneSEL;
+
+		return tieneUPDATE;
+	}
+
+	@DeleteMapping("tienen/{id}/delete")
+	public void eliminaRegistro(@PathVariable (name = "id") int id) {
+		tieneSERV.eliminaRegistroPorID(id);
+	}
 }

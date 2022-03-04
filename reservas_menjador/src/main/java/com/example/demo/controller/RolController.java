@@ -19,37 +19,37 @@ import com.example.demo.services.RolServicesImpl;
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class RolController {
 
-						@Autowired
-						RolServicesImpl rolSERV;
-						
-							@GetMapping("/roles")
-							public List<Rol> totalRegistros(){
-								return rolSERV.totalRegistro();
-							}
-							
-							@GetMapping("/roles/{id}")
-							public Rol ubicaPorID(@PathVariable (name = "id") int id) {
-								return rolSERV.ubicaPorID(id);
-							}
-							
-							@PostMapping("roles/add")
-							public Rol agregaRegistro(@RequestBody Rol rol) {
-								return rolSERV.agregaRegistro(rol);
-							}
-							
-							@PutMapping("roles/{id}/agrega")
-							public Rol actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Rol rol) {
-								Rol rolSEL = new Rol();
-								Rol rolUPDATE = new Rol();
-								rolSEL = rolSERV.ubicaPorID(id);
-								rolSEL.setNombre(rol.getNombre());
-								rolUPDATE = rolSEL;
-								
-								return rolUPDATE;
-							}
-							
-							@DeleteMapping("roles/{id}/delete")
-							public void eliminaRegistro(@PathVariable (name = "id") int id) {
-								rolSERV.eliminaRegistroPorID(id);
-							}
+	@Autowired
+	RolServicesImpl rolSERV;
+
+	@GetMapping("/roles")
+	public List<Rol> totalRegistros(){
+		return rolSERV.totalRegistro();
+	}
+
+	@GetMapping("/roles/{id}")
+	public Rol ubicaPorID(@PathVariable (name = "id") int id) {
+		return rolSERV.ubicaPorID(id);
+	}
+
+	@PostMapping("roles/add")
+	public Rol agregaRegistro(@RequestBody Rol rol) {
+		return rolSERV.agregaRegistro(rol);
+	}
+
+	@PutMapping("roles/{id}/agrega")
+	public Rol actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Rol rol) {
+		Rol rolSEL = new Rol();
+		Rol rolUPDATE = new Rol();
+		rolSEL = rolSERV.ubicaPorID(id);
+		rolSEL.setNombre(rol.getNombre());
+		rolUPDATE = rolSEL;
+
+		return rolUPDATE;
+	}
+
+	@DeleteMapping("roles/{id}/delete")
+	public void eliminaRegistro(@PathVariable (name = "id") int id) {
+		rolSERV.eliminaRegistroPorID(id);
+	}
 }

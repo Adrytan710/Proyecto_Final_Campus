@@ -22,36 +22,36 @@ public class CategoriaController {
 
 	@Autowired
 	CategoriaServicesImpl categoriaSERVICES;
-	
-		@GetMapping("/categorias")
-		public List<Categoria> totalRegistros(){
-			return categoriaSERVICES.totalRegistro();
-		}
-		
-		@GetMapping("/categorias/{id}")
-		public Categoria ubicaPorID(@PathVariable (name = "id") int id) {
-			return categoriaSERVICES.ubicaPorID(id);
-		}
-		
-		@PostMapping("categorias/add")
-		public Categoria agregaRegistro(@RequestBody Categoria categoria) {
-			return categoriaSERVICES.agregaRegistro(categoria);
-		}
-		
-		@PutMapping("categorias/{id}/agrega")
-		public Categoria actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Categoria categoria) {
-			Categoria categoriaSEL = new Categoria();
-			Categoria categoriaUPDATE = new Categoria();
-			categoriaSEL = categoriaSERVICES.ubicaPorID(id);
-			categoriaSEL.setNombre(categoria.getNombre());
-			categoriaSEL.setPlatos(categoria.getPlatos());
-			categoriaUPDATE = categoriaSEL;
-			
-			return categoriaUPDATE;
-		}
-		
-		@DeleteMapping("categorias/{id}/delete")
-		public void eliminaRegistro(@PathVariable (name = "id") int id) {
-			categoriaSERVICES.eliminaRegistroPorID(id);
-		}
+
+	@GetMapping("/categorias")
+	public List<Categoria> totalRegistros(){
+		return categoriaSERVICES.totalRegistro();
+	}
+
+	@GetMapping("/categorias/{id}")
+	public Categoria ubicaPorID(@PathVariable (name = "id") int id) {
+		return categoriaSERVICES.ubicaPorID(id);
+	}
+
+	@PostMapping("categorias/add")
+	public Categoria agregaRegistro(@RequestBody Categoria categoria) {
+		return categoriaSERVICES.agregaRegistro(categoria);
+	}
+
+	@PutMapping("categorias/{id}/agrega")
+	public Categoria actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Categoria categoria) {
+		Categoria categoriaSEL = new Categoria();
+		Categoria categoriaUPDATE = new Categoria();
+		categoriaSEL = categoriaSERVICES.ubicaPorID(id);
+		categoriaSEL.setNombre(categoria.getNombre());
+		categoriaSEL.setPlatos(categoria.getPlatos());
+		categoriaUPDATE = categoriaSEL;
+
+		return categoriaUPDATE;
+	}
+
+	@DeleteMapping("categorias/{id}/delete")
+	public void eliminaRegistro(@PathVariable (name = "id") int id) {
+		categoriaSERVICES.eliminaRegistroPorID(id);
+	}
 }

@@ -21,22 +21,22 @@ public class AlergiaController {
 
 	@Autowired
 	AlergiaServicesImpl alergySERV;
-	
+
 	@GetMapping("/alergias")
 	public List<Alergia> totalRegistros(){
 		return alergySERV.totalRegistro();
 	}
-	
+
 	@GetMapping("/alergias/{id}")
 	public Alergia ubicaPorID(@PathVariable (name = "id") int id) {
 		return alergySERV.ubicaPorID(id);
 	}
-	
+
 	@PostMapping("alergias/add")
 	public Alergia agregaRegistro(@RequestBody Alergia alergy) {
 		return alergySERV.agregaRegistro(alergy);
 	}
-	
+
 	@PutMapping("alergias/{id}/agrega")
 	public Alergia actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Alergia alergy) {
 		Alergia alergySEL = new Alergia();
@@ -46,10 +46,10 @@ public class AlergiaController {
 		alergySEL.setProduce_Alergias(alergy.getProduce_Alergias());
 		alergySEL.setTiene_Alergias(alergy.getTiene_Alergias());
 		alergyUPDATE = alergySEL;
-		
+
 		return alergyUPDATE;
 	}
-	
+
 	@DeleteMapping("alergias/{id}/delete")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		alergySERV.eliminaRegistroPorID(id);
