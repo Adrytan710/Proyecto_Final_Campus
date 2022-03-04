@@ -25,7 +25,6 @@ public class Rol {
 	private int id_rol;
 	
 	private String nombre;
-	private String apellido;
 	
 	@OneToMany
 	@JoinColumn(name = "id_rol")
@@ -35,11 +34,10 @@ public class Rol {
 		
 	}
 
-	public Rol(int id_rol, String nombre, String apellido, List<Usuario> usuarios) {
+	public Rol(int id_rol, String nombre, List<Usuario> usuarios) {
 		super();
 		this.id_rol = id_rol;
 		this.nombre = nombre;
-		this.apellido = apellido;
 		this.usuarios = usuarios;
 	}
 
@@ -59,14 +57,6 @@ public class Rol {
 		this.nombre = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuario")
 	public List<Usuario> getUsuarios() {
@@ -79,7 +69,7 @@ public class Rol {
 
 	@Override
 	public String toString() {
-		return "Rol [id_rol=" + id_rol + ", nombre=" + nombre + ", apellido=" + apellido + ", usuarios=" + usuarios
+		return "Rol [id_rol=" + id_rol + ", nombre=" + nombre + ", usuarios=" + usuarios
 				+ "]";
 	}
 	
