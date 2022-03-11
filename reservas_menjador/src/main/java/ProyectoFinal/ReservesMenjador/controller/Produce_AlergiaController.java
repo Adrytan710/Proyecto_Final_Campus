@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ProyectoFinal.ReservesMenjador.dto.Plato;
 import ProyectoFinal.ReservesMenjador.dto.Produce_Alergia;
+import ProyectoFinal.ReservesMenjador.services.PlatoServicesImpl;
 import ProyectoFinal.ReservesMenjador.services.Produce_AlergiaServicesImpl;
 
 @RestController
@@ -21,6 +23,9 @@ public class Produce_AlergiaController {
 
 	@Autowired
 	Produce_AlergiaServicesImpl produceSERV;
+
+	@Autowired
+	PlatoServicesImpl platoSERV;
 
 	@GetMapping("/producen")
 	public List<Produce_Alergia> totalRegistros(){
@@ -32,6 +37,14 @@ public class Produce_AlergiaController {
 		Produce_Alergia  alergy = new Produce_Alergia();
 		alergy = produceSERV.ubicaPorID(id);
 		return alergy;
+	}
+
+	@GetMapping("/producen/plato/{id}")
+	public List<Produce_Alergia> buscarPorPlato(@PathVariable (name = "id") int id) {
+		
+		Plato plato = platoSERV.ubicaPorID(id);
+		
+		return produceSERV.buscaPorPlato(plato);
 	}
 
 	@PostMapping("producen/add")

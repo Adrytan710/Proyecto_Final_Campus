@@ -1,19 +1,10 @@
 package ProyectoFinal.ReservesMenjador.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import ProyectoFinal.ReservesMenjador.dto.Peticion;
-import ProyectoFinal.ReservesMenjador.services.PeticionServicesImpl;
+import org.springframework.web.bind.annotation.*;
+import ProyectoFinal.ReservesMenjador.dto.*;
+import ProyectoFinal.ReservesMenjador.services.*;
 
 @RestController
 @RequestMapping("/api") // POR DETERMINAR SU USO
@@ -21,6 +12,12 @@ public class PeticionController {
 
 	@Autowired
 	PeticionServicesImpl peticionSERV;
+
+	@Autowired
+	PlatoServicesImpl platoSERV;
+
+	@Autowired
+	OrdenServicesImpl ordenSERV;
 
 	@GetMapping("/peticiones")
 	public List<Peticion> totalRegistros(){
@@ -32,6 +29,22 @@ public class PeticionController {
 		Peticion peticion = new Peticion();
 		peticion = peticionSERV.ubicaPorID(id);
 		return peticion;
+	}
+	
+	@GetMapping("/peticiones/plato/{id}")
+	public List<Peticion> buscarPorPlato(@PathVariable (name = "id") int id){
+		
+		Plato plato = platoSERV.ubicaPorID(id);
+		
+		return peticionSERV.buscaPorPlato(plato);
+	}
+	
+	@GetMapping("/peticiones/orden/{id}")
+	public List<Peticion> buscarPorOrden(@PathVariable (name = "id") int id){
+		
+		Orden orden = ordenSERV.ubicaPorID(id);
+		
+		return peticionSERV.buscaPorOrden(orden);
 	}
 
 	@PostMapping("peticiones/add")

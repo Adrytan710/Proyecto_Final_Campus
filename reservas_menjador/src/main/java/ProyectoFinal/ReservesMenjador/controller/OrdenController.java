@@ -3,17 +3,12 @@ package ProyectoFinal.ReservesMenjador.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ProyectoFinal.ReservesMenjador.dto.Orden;
+import ProyectoFinal.ReservesMenjador.dto.Usuario;
 import ProyectoFinal.ReservesMenjador.services.OrdenServicesImpl;
+import ProyectoFinal.ReservesMenjador.services.UsuarioServiceImpl;
 
 @RestController
 @RequestMapping("/api") // POR DETERMINAR SU USO
@@ -21,6 +16,9 @@ public class OrdenController {
 
 	@Autowired
 	OrdenServicesImpl ordenSERV;
+
+	@Autowired
+	UsuarioServiceImpl usuarioServiceImpl;
 
 	@GetMapping("/ordenes")
 	public List<Orden> totalRegistros(){
@@ -32,6 +30,14 @@ public class OrdenController {
 		Orden orden = new Orden();
 		orden = ordenSERV.ubicaPorID(id);
 		return orden;
+	}
+
+	@GetMapping("/ordenes/usuario/{usuario}")
+	public List<Orden> buscarPorUsuario(@PathVariable (name = "usuario") String usuario) {
+		
+		Usuario usuarioSel = usuarioServiceImpl.buscaPorUsuario(usuario);
+		
+		return ordenSERV.buscaPorUsuario(usuarioSel);
 	}
 
 	@PostMapping("ordenes/add")
