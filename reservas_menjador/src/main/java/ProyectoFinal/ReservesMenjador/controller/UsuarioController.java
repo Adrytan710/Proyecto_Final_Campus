@@ -2,61 +2,62 @@ package ProyectoFinal.ReservesMenjador.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ProyectoFinal.ReservesMenjador.dto.Usuario;
-import ProyectoFinal.ReservesMenjador.services.UsuarioServicesImpl;
+import ProyectoFinal.ReservesMenjador.dao.IUsuarioDAO;
 
 @RestController
-@RequestMapping("/api") // POR DETERMINAR SU USO
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class UsuarioController {
 
-	@Autowired
-	UsuarioServicesImpl usuarioSERV;
-
-	@GetMapping("/usuarios")
-	public List<Usuario> totalRegistros(){
-		return usuarioSERV.totalRegistro();
+	private IUsuarioDAO iUsuarioDAO;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	public UsuarioController(IUsuarioDAO iUsuarioDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.iUsuarioDAO = iUsuarioDAO;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+	
+	@GetMapping("/response-entity-builder-with-http-headers")
+	public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
+	    HttpHeaders responseHeaders = new HttpHeaders();
+	    responseHeaders.set("Baeldung-Example-Header", "Value-ResponseEntityBuilderWithHttpHeaders");
+	    return ResponseEntity.ok()
+	      .headers(responseHeaders)
+	      .body("Response with header using ResponseEntity");
+	}
+	
+	@PostMapping("/usuarios/")
+	public Usuario saveUsuario(@RequestBody Usuario user) {
+		user.setPass_usuario(bCryptPasswordEncoder.encode(user.getPass_usuario()));
+		iUsuarioDAO.save(user);
+		return user;
 	}
 
-	@GetMapping("/usuarios/{id}")
-	public Usuario ubicaPorID(@PathVariable (name = "id") int id) {
-		Usuario usuario = new Usuario();
-		usuario = usuarioSERV.ubicaPorID(id);
-		return usuario;
+	@GetMapping("/usuarios/")
+	public List<Usuario> getAllUsuarios() {
+		return iUsuarioDAO.findAll();
 	}
 
-	@PostMapping("usuarios/add")
-	public Usuario agregaRegistro(@RequestBody Usuario usuario) {
-		return usuarioSERV.agregaRegistro(usuario);
+	@GetMapping("/usuarios/{usuario}")
+	public Usuario getUsuario(@PathVariable String username) {
+		return iUsuarioDAO.findByUsername(username);
 	}
-
-	@PutMapping("usuarios/{id}/agrega")
-	public Usuario actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Usuario usuario) {
-		Usuario usuarioSEL = new Usuario();
-		Usuario usuarioUPDATE = new Usuario();
-		usuarioSEL = usuarioSERV.ubicaPorID(id);
-		usuarioSEL.setUsuario(usuario.getUsuario());
-		usuarioSEL.setPass_usuario(usuario.getPass_usuario());
-		usuarioSEL.setEmail(usuario.getEmail());
-		usuarioSEL.setRol(usuario.getRol());
-		usuarioSEL.setOrdenes(usuario.getOrdenes());
-		usuarioSEL.setAlergias(usuario.getAlergias());
-		usuarioUPDATE = usuarioSEL;
-
-		return usuarioUPDATE;
-	}
-
-	@DeleteMapping("usuarios/{id}/delete")
-	public void eliminaRegistro(@PathVariable (name = "id") int id) {
-		usuarioSERV.eliminaRegistroPorID(id);
+	
+	@DeleteMapping("/usuarios/{id}")
+	public String eliminarUser(@PathVariable(name="id")long id) {
+		iUsuarioDAO.deleteById((int) id);
+		return "User deleted.";
 	}
 }
