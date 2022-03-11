@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ProyectoFinal.ReservesMenjador.dao.IPeticionDAO;
+import ProyectoFinal.ReservesMenjador.dto.Orden;
 import ProyectoFinal.ReservesMenjador.dto.Peticion;
+import ProyectoFinal.ReservesMenjador.dto.Plato;
 
 @Service
 public class PeticionServicesImpl implements IPeticionSERVICES{
@@ -37,6 +39,16 @@ public class PeticionServicesImpl implements IPeticionSERVICES{
 	@Override
 	public Peticion actualizaResgistro(Peticion peticion) {
 		return peticionDAO.save(peticion);
+	}
+
+	@Override
+	public List<Peticion> buscaPorOrden(Orden orden) {
+		return peticionDAO.findByOrden(orden);
+	}
+
+	@Override
+	public List<Peticion> buscaPorPlato(Plato plato) {
+		return peticionDAO.findByPlato(plato);
 	}
 
 }

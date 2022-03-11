@@ -3,6 +3,7 @@ package ProyectoFinal.ReservesMenjador.services;
 import java.util.List;
 
 import ProyectoFinal.ReservesMenjador.dto.Orden;
+import ProyectoFinal.ReservesMenjador.dto.Usuario;
 
 public interface IOrdenSERVICES {
 
@@ -12,4 +13,5 @@ public interface IOrdenSERVICES {
 			public void eliminaRegistroPorID(int id);
 			public Orden agregaRegistro(Orden orden);
 			public Orden actualizaResgistro(Orden orden);
+			public List<Orden> buscaPorUsuario(Usuario usuario);		
 }

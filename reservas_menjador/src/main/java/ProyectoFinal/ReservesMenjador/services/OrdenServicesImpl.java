@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ProyectoFinal.ReservesMenjador.dao.IOrdenDAO;
 import ProyectoFinal.ReservesMenjador.dto.Orden;
+import ProyectoFinal.ReservesMenjador.dto.Usuario;
 
 @Service
 public class OrdenServicesImpl implements IOrdenSERVICES{
@@ -39,4 +40,8 @@ public class OrdenServicesImpl implements IOrdenSERVICES{
 		return orderDAO.save(orden);
 	}
 
+	@Override
+	public List<Orden> buscaPorUsuario(Usuario usuario) {
+		return orderDAO.findByUsuario(usuario);
+	}
 }

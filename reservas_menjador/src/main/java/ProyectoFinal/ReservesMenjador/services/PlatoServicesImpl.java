@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ProyectoFinal.ReservesMenjador.dao.IPlatoDAO;
+import ProyectoFinal.ReservesMenjador.dto.Categoria;
 import ProyectoFinal.ReservesMenjador.dto.Plato;
 
 @Service
@@ -37,5 +38,10 @@ public class PlatoServicesImpl implements IPlatoSERVICES{
 	@Override
 	public Plato actualizaResgistro(Plato dish) {
 		return platoDAO.save(dish);
+	}
+
+	@Override
+	public List<Plato> buscaPorCategoria(Categoria categoria) {
+		return platoDAO.findByCategoria(categoria);
 	}
 }

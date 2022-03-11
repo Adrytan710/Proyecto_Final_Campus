@@ -2,6 +2,7 @@ package ProyectoFinal.ReservesMenjador.services;
 
 import java.util.List;
 
+import ProyectoFinal.ReservesMenjador.dto.Categoria;
 import ProyectoFinal.ReservesMenjador.dto.Plato;
 
 public interface IPlatoSERVICES {
@@ -12,4 +13,5 @@ public interface IPlatoSERVICES {
 	public void eliminaRegistroPorID(int id);
 	public Plato agregaRegistro(Plato dish);
 	public Plato actualizaResgistro(Plato dish);
+	public List<Plato> buscaPorCategoria(Categoria categoria);
 }
