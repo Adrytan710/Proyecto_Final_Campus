@@ -51,13 +51,13 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/usuarios/{usuario}")
-	public Usuario getUsuario(@PathVariable String username) {
-		return iUsuarioDAO.findByUsername(username);
+	public Usuario getUsuario(@PathVariable String usuario) {
+		return iUsuarioDAO.findByUsuario(usuario);
 	}
 	
 	@DeleteMapping("/usuarios/{id}")
-	public String eliminarUser(@PathVariable(name="id")long id) {
-		iUsuarioDAO.deleteById((int) id);
+	public String eliminarUser(@PathVariable(name="id")int id) {
+		iUsuarioDAO.deleteById(id);
 		return "User deleted.";
 	}
 }
