@@ -39,21 +39,23 @@ public class PlatoController {
 		return platoSERV.agregaRegistro(plato);
 	}
 
-	@PutMapping("platos/{id}/agrega")
+	@PutMapping("platos/update/{id}")
 	public Plato actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Plato plato) {
+		
 		Plato platoSEL = new Plato();
 		Plato platoUPDATE = new Plato();
+		
 		platoSEL = platoSERV.ubicaPorID(id);
+		platoSEL.setId(id);
 		platoSEL.setNombre(plato.getNombre());
 		platoSEL.setFoto(plato.getFoto());
 		platoSEL.setCategoria(plato.getCategoria());
-		platoSEL.setPeticions(plato.getPeticions());
-		platoUPDATE = platoSEL;
+		platoUPDATE = platoSERV.actualizaResgistro(platoSEL);
 
 		return platoUPDATE;
 	}
 
-	@DeleteMapping("platos/{id}/delete")
+	@DeleteMapping("platos/delete/{id}")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		platoSERV.eliminaRegistroPorID(id);
 	}

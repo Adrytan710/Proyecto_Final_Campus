@@ -39,19 +39,22 @@ public class PeticionController {
 		return peticionSERV.agregaRegistro(peticion);
 	}
 
-	@PutMapping("peticiones/{id}/agrega")
+	@PutMapping("peticiones/update/{id}")
 	public Peticion actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Peticion peticion) {
+		
 		Peticion peticionSEL = new Peticion();
 		Peticion peticionUPDATE = new Peticion();
+		
 		peticionSEL = peticionSERV.ubicaPorID(id);
+		peticionSEL.setId(id);
 		peticionSEL.setOrden(peticion.getOrden());
 		peticionSEL.setPlato(peticion.getPlato());
-		peticionUPDATE = peticionSEL;
+		peticionUPDATE = peticionSERV.actualizaResgistro(peticionSEL);
 
 		return peticionUPDATE;
 	}
 
-	@DeleteMapping("peticiones/{id}/delete")
+	@DeleteMapping("peticiones/delete/{id}")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		peticionSERV.eliminaRegistroPorID(id);
 	}

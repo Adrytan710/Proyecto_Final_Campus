@@ -39,18 +39,21 @@ public class RolController {
 		return rolSERV.agregaRegistro(rol);
 	}
 
-	@PutMapping("roles/{id}/agrega")
+	@PutMapping("roles/update/{id}")
 	public Rol actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Rol rol) {
+		
 		Rol rolSEL = new Rol();
 		Rol rolUPDATE = new Rol();
+		
 		rolSEL = rolSERV.ubicaPorID(id);
+		rolSEL.setId(id);
 		rolSEL.setNombre(rol.getNombre());
-		rolUPDATE = rolSEL;
+		rolUPDATE = rolSERV.actualizaResgistro(rolSEL);
 
 		return rolUPDATE;
 	}
 
-	@DeleteMapping("roles/{id}/delete")
+	@DeleteMapping("roles/delete/{id}")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		rolSERV.eliminaRegistroPorID(id);
 	}

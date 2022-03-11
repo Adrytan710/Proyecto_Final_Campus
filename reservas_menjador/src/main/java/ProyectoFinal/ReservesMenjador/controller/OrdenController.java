@@ -39,20 +39,22 @@ public class OrdenController {
 		return ordenSERV.agregaRegistro(orden);
 	}
 
-	@PutMapping("ordenes/{id}/agrega")
+	@PutMapping("ordenes/update/{id}")
 	public Orden actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Orden orden) {
+		
 		Orden ordenSEL = new Orden();
 		Orden ordenUPDATE = new Orden();
+		
 		ordenSEL = ordenSERV.ubicaPorID(id);
+		ordenSEL.setId(id);
 		ordenSEL.setFecha(orden.getFecha());
-		ordenSEL.setPeticion(orden.getPeticion());
 		ordenSEL.setUsuario(orden.getUsuario());
-		ordenUPDATE = ordenSEL;
+		ordenUPDATE = ordenSERV.actualizaResgistro(ordenSEL);
 
 		return ordenUPDATE;
 	}
 
-	@DeleteMapping("ordenes/{id}/delete")
+	@DeleteMapping("ordenes/delete/{id}")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		ordenSERV.eliminaRegistroPorID(id);
 	}

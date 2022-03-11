@@ -38,19 +38,22 @@ public class Tiene_AlergiaController {
 		return tieneSERV.agregaRegistro(tiene);
 	}
 
-	@PutMapping("tienen/{id}/agrega")
+	@PutMapping("tienen/update/{id}")
 	public Tiene_Alergia actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Tiene_Alergia tiene) {
+		
 		Tiene_Alergia tieneSEL = new Tiene_Alergia();
 		Tiene_Alergia tieneUPDATE = new Tiene_Alergia();
+		
 		tieneSEL = tieneSERV.ubicaPorID(id);
+		tieneSEL.setId(id);
 		tieneSEL.setAlergia(tiene.getAlergia());
 		tieneSEL.setUsuario(tiene.getUsuario());
-		tieneUPDATE = tieneSEL;
+		tieneUPDATE = tieneSERV.actualizaResgistro(tieneSEL);
 
 		return tieneUPDATE;
 	}
 
-	@DeleteMapping("tienen/{id}/delete")
+	@DeleteMapping("tienen/delete/{id}")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		tieneSERV.eliminaRegistroPorID(id);
 	}

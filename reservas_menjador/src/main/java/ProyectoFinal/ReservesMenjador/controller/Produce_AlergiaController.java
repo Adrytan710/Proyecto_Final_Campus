@@ -39,19 +39,21 @@ public class Produce_AlergiaController {
 		return produceSERV.agregaRegistro(produce);
 	}
 
-	@PutMapping("producen/{id}/agrega")
+	@PutMapping("producen/update/{id}")
 	public Produce_Alergia actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Produce_Alergia produce) {
+		
 		Produce_Alergia produceSEL = new Produce_Alergia();
 		Produce_Alergia produceUPDATE = new Produce_Alergia();
+		
 		produceSEL = produceSERV.ubicaPorID(id);
 		produceSEL.setAlergia(produce.getAlergia());
 		produceSEL.setPlato(produce.getPlato());
-		produceUPDATE = produceSEL;
+		produceUPDATE = produceSERV.actualizaResgistro(produceSEL);
 
 		return produceUPDATE;
 	}
 
-	@DeleteMapping("producen/{id}/delete")
+	@DeleteMapping("producen/delete/{id}")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		produceSERV.eliminaRegistroPorID(id);
 	}

@@ -40,19 +40,21 @@ public class CategoriaController {
 		return categoriaSERVICES.agregaRegistro(categoria);
 	}
 
-	@PutMapping("categorias/{id}/agrega")
+	@PutMapping("categorias/update/{id}")
 	public Categoria actualizaRegistro(@PathVariable (name = "id") int id, @RequestBody Categoria categoria) {
+		
 		Categoria categoriaSEL = new Categoria();
 		Categoria categoriaUPDATE = new Categoria();
+		
 		categoriaSEL = categoriaSERVICES.ubicaPorID(id);
+		categoriaSEL.setId(id);
 		categoriaSEL.setNombre(categoria.getNombre());
-		categoriaSEL.setPlatos(categoria.getPlatos());
-		categoriaUPDATE = categoriaSEL;
+		categoriaUPDATE = categoriaSERVICES.actualizaResgistro(categoriaSEL);
 
 		return categoriaUPDATE;
 	}
 
-	@DeleteMapping("categorias/{id}/delete")
+	@DeleteMapping("categorias/delete/{id}")
 	public void eliminaRegistro(@PathVariable (name = "id") int id) {
 		categoriaSERVICES.eliminaRegistroPorID(id);
 	}
