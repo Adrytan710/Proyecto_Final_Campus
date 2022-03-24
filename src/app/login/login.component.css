@@ -1,0 +1,21 @@
+.contenedor {
+  margin-top: 100px;
+}
+
+p {
+  color: white;
+  text-align: center;
+  margin-top: 4px;
+}
+
+h5 {
+  text-align: left;
+}
+
+.p1 {
+  text-align: left;
+}
+
+.candado {
+  float: right;
+}

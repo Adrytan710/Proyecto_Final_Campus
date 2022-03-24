@@ -15,17 +15,17 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any>
+  login(usuario: string, pass_usuario: string): Observable<any>
   {
     return this.http.post(AUTH_API + 'login', {
-      username,
-      password
+      usuario,
+      pass_usuario
     }, httpOptions);
   }
 
-  getUsuario(username: string): Observable<any>
+  getUsuario(usuario: string): Observable<any>
   {
-    return this.http.get(AUTH_API + `usuarios/${username}/`, httpOptions);
+    return this.http.get(AUTH_API + `usuarios/${usuario}/`, httpOptions);
   }
 
   getUsuarios(): Observable<any>
@@ -33,11 +33,11 @@ export class UsersService {
     return this.http.get(AUTH_API + `usuarios/`, httpOptions);
   }
 
-  addUsuario(username: string, password: string, email: string, rol: object): Observable<any>
+  addUsuario(usuario: string, pass_usuario: string, email: string, rol: object): Observable<any>
   {
     return this.http.post(AUTH_API + `usuarios/`, {
-      username,
-      password,
+      usuario,
+      pass_usuario,
       email,
       rol
     }, httpOptions);
