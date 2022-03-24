@@ -7,25 +7,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
         <li class="nav-item">
-          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/']" >Home</a>
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/']">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/personajes']">Characters</a>
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/orden']">Nueva Orden</a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/alergias']">Alergias</a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/users']">Usuarios</a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/platos']">Platos</a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/roles']">Roles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/personajes/add']">Add Characters</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/about']">About</a>
-        </li>
-      </ul>
-      <form class="d-flex mx-5" *ngIf="isLoggedIn">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      <ul class="navbar-nav ms-5 mb-2 mb-lg-0" *ngIf="isLoggedIn">
-        <li class="nav-item">
-          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']" >{{ username }}</a>
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']">{{ username }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="logout()">LogOut</a>

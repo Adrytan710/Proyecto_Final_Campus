@@ -22,7 +22,7 @@ export class AppComponent {
       this.username = window.sessionStorage.getItem("auth-username");
       this.rol = window.sessionStorage.getItem("auth-rol");
 
-      this.showAdminBoard = (this.rol == 'admin');
+      this.showAdminBoard = (this.rol == 'Administrador');
     }
   }
 
