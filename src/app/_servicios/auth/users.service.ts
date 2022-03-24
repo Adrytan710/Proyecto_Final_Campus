@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 
 const AUTH_API = 'https://reserva-restaurant-fe-jai.herokuapp.com/';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,17 +20,17 @@ export class UsersService {
     return this.http.post(AUTH_API + 'login', {
       username,
       password
-    });
+    }, httpOptions);
   }
 
   getUsuario(username: string): Observable<any>
   {
-    return this.http.get(AUTH_API + `usuarios/${username}/`);
+    return this.http.get(AUTH_API + `usuarios/${username}/`, httpOptions);
   }
 
   getUsuarios(): Observable<any>
   {
-    return this.http.get(AUTH_API + `usuarios/`);
+    return this.http.get(AUTH_API + `usuarios/`, httpOptions);
   }
 
   addUsuario(username: string, password: string, email: string, rol: object): Observable<any>
@@ -36,11 +40,11 @@ export class UsersService {
       password,
       email,
       rol
-    });
+    }, httpOptions);
   }
 
   deleteUsuario(id: any): Observable<any>
   {
-    return this.http.delete(AUTH_API + `usuarios/${id}/`);
+    return this.http.delete(AUTH_API + `usuarios/${id}/`, httpOptions);
   }
 }
