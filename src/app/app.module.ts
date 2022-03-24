@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AlergiasUsuarioComponent } from './usuarios/alergias-usuario/alergias-usuario.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { AlergiasUsuarioComponent } from './usuarios/alergias-usuario/alergias-u
     CommonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

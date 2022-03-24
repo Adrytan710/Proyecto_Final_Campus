@@ -25,18 +25,20 @@ export class LoginComponent implements OnInit {
       .subscribe(
         response => {
           this.submitted = true;
-          console.log(response);
           window.sessionStorage.setItem("auth-token", response.token);
           window.sessionStorage.setItem("auth-username", this.login.username);
+
           this.usersService.getUsuario(this.login.username)
           .subscribe(
             response => {
-              window.sessionStorage.setItem("auth-rol", response.rol);
+              window.sessionStorage.setItem("auth-rol", response.rol.nombre);
             },
             error => {
               console.log(error.message);
             }
           )
+
+          window.location.reload();
         },
         error => {
           console.log(error.message);
