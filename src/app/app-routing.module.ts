@@ -20,23 +20,23 @@ import { AdminGuardService } from './_servicios/auth/admin-guard.service';
 import { AuthGuardService } from './_servicios/auth/auth-guard.service';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent/*,canActivate: [AuthGuardService]*/},
-  {path:'home', component: HomeComponent/*,canActivate: [AuthGuardService]*/},
+  {path:'', component: HomeComponent, canActivate: [AuthGuardService]},
+  {path:'home', component: HomeComponent, canActivate: [AuthGuardService]},
   {path:'login', component: LoginComponent},
-  {path:'orden', component: OrdenComponent/*,canActivate: [AuthGuardService]*/},
-  {path:'profile', component: AlergiasUsuarioComponent/*,canActivate: [AuthGuardService]*/},
-  {path:'users', component: UsuariosComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'users/add', component: AddUsuarioComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'users/:id', component: UpdateUsuarioComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'roles', component: RolesComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'roles/add', component: AddRolComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'roles/:id', component: UpdateRolComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'platos', component: PlatosComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'platos/add', component: AddPlatoComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'platos/:id', component: UpdatePlatoComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'alergias', component: AlergiasComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'alergias/add', component: AddAlergiaComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/},
-  {path:'alergias/:id', component: UpdateAlergiaComponent/*,canActivate: [AuthGuardService, AdminGuardService]*/}
+  {path:'orden', component: OrdenComponent, canActivate: [AuthGuardService]},
+  {path:'profile', component: AlergiasUsuarioComponent, canActivate: [AuthGuardService]},
+  {path:'users', component: UsuariosComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'users/add', component: AddUsuarioComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'users/:id', component: UpdateUsuarioComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'roles', component: RolesComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'roles/add', component: AddRolComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'roles/:id', component: UpdateRolComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'platos', component: PlatosComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'platos/add', component: AddPlatoComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'platos/:id', component: UpdatePlatoComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'alergias', component: AlergiasComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'alergias/add', component: AddAlergiaComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path:'alergias/:id', component: UpdateAlergiaComponent, canActivate: [AuthGuardService, AdminGuardService]}
 ];
 
 @NgModule({
