@@ -120,8 +120,6 @@ export class ApiRestService {
     return this.http.delete(baseAPI);
   }
 
-  // REVISAR YA QUE INTERVIENEN 2 TABLAS
-  // VERIFICAR YA QUE INTERVIENEN FACTORES A CONTEMPLAR
   ubicaPorOrden(id : any) : Observable <object> {
     return this.http.get(`${baseAPI}/${id}`);
   }
