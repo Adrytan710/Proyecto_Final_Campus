@@ -38,19 +38,10 @@ export class LoginComponent implements OnInit {
           window.sessionStorage.setItem("auth-token", response.token);
           window.sessionStorage.setItem("auth-username", this.login.username);
 
-          this.usersService.getUsuario(this.login.username)
-          .subscribe(
-            response => {
-              window.sessionStorage.setItem("auth-rol", response.rol.nombre);
-            },
-            error => {
-              console.log(error.message);
-            }
-          )
-
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          window.location.reload();
+
+          this.recogerRol();
         },
         error => {
           this.isLoginFailed = true;
@@ -59,5 +50,19 @@ export class LoginComponent implements OnInit {
             this.errorMessage = 'Usuario y/o Contraseña Incorrectos';
           }
         });
+  }
+
+  recogerRol(): void
+  {
+    this.usersService.getUsuario(this.login.username)
+    .subscribe(
+      response => {
+        window.sessionStorage.setItem("auth-rol", response.rol.nombre);
+        window.location.reload();
+      },
+      error => {
+        console.log(error.message);
+      }
+    );
   }
 }
