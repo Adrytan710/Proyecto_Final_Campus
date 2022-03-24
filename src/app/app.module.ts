@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,8 +19,9 @@ import { AddUsuarioComponent } from './usuarios/add-usuario/add-usuario.componen
 import { UpdateUsuarioComponent } from './usuarios/update-usuario/update-usuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { AlergiasUsuarioComponent } from './usuarios/alergias-usuario/alergias-usuario.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
