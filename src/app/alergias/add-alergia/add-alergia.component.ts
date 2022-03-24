@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiRestService } from 'src/app/_servicios/api-rest.service';
+
 
 @Component({
   selector: 'app-add-alergia',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAlergiaComponent implements OnInit {
 
-  constructor() { }
+  alergia : any = {
+    id : 0,  // VERIFICAR EL NUMBER
+    nombre : ''
+  };
+  agregado = false;
+
+  constructor(private alergiaServices : ApiRestService) { }
 
   ngOnInit(): void {
   }
+
+  guardaRegistro() : void {
+    const data = {
+      id : this.alergia.id,
+      nombre : this.alergia.nombre
+    };
+
+    this.alergiaServices.agregaElementoAlergias(data)
+      .subscribe(
+        respuesta => {
+          console.log(respuesta); //SE PUEDE ELIMINAR
+          this.agregado = true;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  nuevoRegistro() : void {
+    this.agregado = false;
+    this.alergia = {
+      id : 0,
+      nombre : ''
+    }
+  };
 
 }

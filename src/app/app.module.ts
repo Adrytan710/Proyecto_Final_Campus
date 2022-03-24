@@ -20,12 +20,11 @@ import { UpdateUsuarioComponent } from './usuarios/update-usuario/update-usuario
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AlergiasUsuarioComponent } from './usuarios/alergias-usuario/alergias-usuario.component';
-<<<<<<< HEAD
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-=======
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
->>>>>>> 62a6bafb598b31c19cadabc426d37a2f00096d20
+
 
 @NgModule({
   declarations: [

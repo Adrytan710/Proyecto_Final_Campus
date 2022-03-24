@@ -36,7 +36,7 @@ const routes: Routes = [
   {path:'platos/:id', component: UpdatePlatoComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path:'alergias', component: AlergiasComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path:'alergias/add', component: AddAlergiaComponent, canActivate: [AuthGuardService, AdminGuardService]},
-  {path:'alergias/:id', component: UpdateAlergiaComponent, canActivate: [AuthGuardService, AdminGuardService]}
+  {path:'alergias/:id', component: UpdateAlergiaComponent, canActivate: [AuthGuardService, AdminGuardService]}//UPDATE
 ];
 
 @NgModule({
