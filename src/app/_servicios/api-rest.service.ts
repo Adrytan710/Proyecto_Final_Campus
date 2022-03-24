@@ -120,6 +120,7 @@ export class ApiRestService {
     return this.http.delete(baseAPI);
   }
 
+  // REVISAR YA QUE INTERVIENEN 2 TABLAS
   // VERIFICAR YA QUE INTERVIENEN FACTORES A CONTEMPLAR
   ubicaPorOrden(id : any) : Observable <object> {
     return this.http.get(`${baseAPI}/${id}`);
@@ -128,5 +129,123 @@ export class ApiRestService {
     return this.http.get(`${baseAPI}/${id}`);
   }
 
-  // REVISAR YA QUE INTERVIENEN 2 TABLAS
+  // CRUD PETICIÓN, ANEXO 'UBICA_POR_USER'
+
+  getListaPlato() : Observable <object> {
+    return this.http.get<object>(baseAPI);
+  }
+
+  ubicaporIdPlato(id : any) : Observable <object> {
+    return this.http.get(`${baseAPI}/${id}`);
+  }
+
+  agregaElementoPlato(data : any) : Observable <object> {
+    return this.http.post(baseAPI, data);
+  }
+
+  actualizaRegistroPlato(id : any, data : any) : Observable <object> {
+    return this.http.put(`${baseAPI}/${id}`, data);
+  }
+
+  eliminaElementoPlato(id : any) : Observable <object> {
+    return this.http.delete(`${baseAPI}/${id}`);
+  }
+
+  eliminarRegistrosPlato() : Observable <object> {
+    return this.http.delete(baseAPI);
+  }
+
+  ubicaPorCategoria(id : any) : Observable <object> {
+    return this.http.get(`${baseAPI}/${id}`);
+  }
+
+  // CRUD ROL, ANEXO 'UBICA_POR_USER'
+
+  getListaRol() : Observable <object> {
+    return this.http.get<object>(baseAPI);
+  }
+
+  ubicaporIdRol(id : any) : Observable <object> {
+    return this.http.get(`${baseAPI}/${id}`);
+  }
+
+  agregaElementoRol(data : any) : Observable <object> {
+    return this.http.post(baseAPI, data);
+  }
+
+  actualizaRegistroRol(id : any, data : any) : Observable <object> {
+    return this.http.put(`${baseAPI}/${id}`, data);
+  }
+
+  eliminaElementoRol(id : any) : Observable <object> {
+    return this.http.delete(`${baseAPI}/${id}`);
+  }
+
+  eliminarRegistrosRol() : Observable <object> {
+    return this.http.delete(baseAPI);
+  }
+
+  // CRUD PRODUCE_ALERGIA, ANEXO 'UBICA_POR_USER'
+
+  getListaProduceAlergia() : Observable <object> {
+    return this.http.get<object>(baseAPI);
+  }
+
+  ubicaporIdProduceAlergia(id : any) : Observable <object> {
+    return this.http.get(`${baseAPI}/${id}`);
+  }
+
+  agregaElementoProduceAlergia(data : any) : Observable <object> {
+    return this.http.post(baseAPI, data);
+  }
+
+  actualizaRegistroProduceAlergia(id : any, data : any) : Observable <object> {
+    return this.http.put(`${baseAPI}/${id}`, data);
+  }
+
+  eliminaElementoProduceAlergia(id : any) : Observable <object> {
+    return this.http.delete(`${baseAPI}/${id}`);
+  }
+
+  eliminarRegistrosProduceAlergia() : Observable <object> {
+    return this.http.delete(baseAPI);
+  }
+
+  ubicaPorPlatoAlergia(id : any) : Observable <object> {
+    return this.http.get(`${baseAPI}/${id}`);
+  }
+
+  // CRUD TIENE_ALERGIA, ANEXO 'UBICA_POR_USER'
+
+  getListaTieneAlergia() : Observable <object> {
+    return this.http.get<object>(baseAPI);
+  }
+
+  ubicaporIdTieneAlergia(id : any) : Observable <object> {
+    return this.http.get(`${baseAPI}/${id}`);
+  }
+
+  agregaElementoTieneAlergia(data : any) : Observable <object> {
+    return this.http.post(baseAPI, data);
+  }
+
+  actualizaRegistroTieneAlergia(id : any, data : any) : Observable <object> {
+    return this.http.put(`${baseAPI}/${id}`, data);
+  }
+
+  eliminaElementoTieneAlergia(id : any) : Observable <object> {
+    return this.http.delete(`${baseAPI}/${id}`);
+  }
+
+  eliminarRegistrosTieneAlergia() : Observable <object> {
+    return this.http.delete(baseAPI);
+  }
+
+  ubicaPorIdAlergia(id : any) : Observable <object> {
+    return this.http.get(`${baseAPI}/${id}`);
+  }
+
+  ubicaPorNombreUsuario(usuario : string) : Observable <object> {
+    return this.http.get(`${baseAPI}/${usuario}`);
+  }
 }
