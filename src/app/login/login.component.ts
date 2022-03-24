@@ -12,19 +12,29 @@ export class LoginComponent implements OnInit {
     username: '',
     password: ''
   };
-
-  submitted = false;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  msg = '';
+  rol: string | null = '';
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
+
+    if(window.sessionStorage.getItem("auth-token"))
+    {
+      this.isLoggedIn = true;
+      this.rol = window.sessionStorage.getItem("auth-rol");
+      this.login.username = window.sessionStorage.getItem("auth-username");
+    }
   }
 
   logUser(): void {
     this.usersService.login(this.login.username, this.login.password)
       .subscribe(
         response => {
-          this.submitted = true;
+
           window.sessionStorage.setItem("auth-token", response.token);
           window.sessionStorage.setItem("auth-username", this.login.username);
 
@@ -38,10 +48,16 @@ export class LoginComponent implements OnInit {
             }
           )
 
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
           window.location.reload();
         },
         error => {
-          console.log(error.message);
+          this.isLoginFailed = true;
+          if("Http failure response for https://reserva-restaurant-fe-jai.herokuapp.com/login: 403 OK" == error.message)
+          {
+            this.errorMessage = 'Usuario y/o Contraseña Incorrectos';
+          }
         });
   }
 }
