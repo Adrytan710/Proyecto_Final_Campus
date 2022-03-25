@@ -14,25 +14,26 @@ export class ApiRestService {
   // CRUD ALERGIAS
 
   getListaAlergias() : Observable <object> {
-    return this.http.get<object>(baseAPI);
+    return this.http.get<object>(`${baseAPI}/alergias`);
   }
 
   ubicaporIdAlergias(id : any) : Observable <object> {
-    return this.http.get(`${baseAPI}/${id}`);
+    return this.http.get(`${baseAPI}/alergias/${id}`);
   }
 
   agregaElementoAlergias(data : any) : Observable <object> {
-    return this.http.post(baseAPI, data);
+    return this.http.post(`${baseAPI}/alergias/add`, data);
   }
 
   actualizaRegistroAlergias(id : any, data : any) : Observable <object> {
-    return this.http.put(`${baseAPI}/${id}`, data);
+    return this.http.put(`${baseAPI}/alergias/update/${id}`, data);
   }
 
   eliminaElementoAlergias(id : any) : Observable <object> {
-    return this.http.delete(`${baseAPI}/${id}`);
+    return this.http.delete(`${baseAPI}/alergias/delete/${id}`);
   }
 
+  //REVISAR EL POSTMAN SOBRE LA ELIMINACIÓN DE TODOS LOS REGISTROS
   eliminarRegistrosAlergias() : Observable <object> {
     return this.http.delete(baseAPI);
   }
