@@ -10,7 +10,7 @@ export class AdminGuardService implements CanActivate {
 
   canActivate()
   {
-    const role = window.sessionStorage.getItem("auth-role");
+    const role = window.sessionStorage.getItem("auth-rol");
     if(role != 'Administrador')
     {
       this.router.navigate(['home']);
