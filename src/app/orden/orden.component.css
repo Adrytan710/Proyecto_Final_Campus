@@ -1,0 +1,33 @@
+h2 {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.tabla-ext {
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.tabla-ext2 {
+  margin-top: 50px;
+  margin-left: 200px;
+}
+
+.tit {
+  text-align: center;
+}
+
+.colum {
+  border: 1px solid black;
+  text-align: center;
+}
+
+i {
+  margin-left: 5px;
+}
+
+.boton {
+  float: right;
+  margin-right: 280px;
+}
+
