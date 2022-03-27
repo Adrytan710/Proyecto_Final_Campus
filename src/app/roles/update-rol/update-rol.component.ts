@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiRestService } from 'src/app/_servicios/api-rest.service';
 
 @Component({
   selector: 'app-update-rol',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateRolComponent implements OnInit {
 
-  constructor() { }
+  rol : any = {
+    id : '',
+    nombre : ''
+  };
+  recogidaDatos = false;
+  actualizado = false;
+
+  constructor(private apiService : ApiRestService, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.apiService.ubicaporIdRol(this.route.snapshot.paramMap.get('id'))
+    .subscribe(
+      respuesta => {
+        this.recogidaDatos = true;
+        this.rol = respuesta;
+    });
+  }
+
+  actualizaRegistro() : void {
+    const data = {
+      id : this.rol.id,
+      nombre : this.rol.nombre
+    };
+    this.apiService.actualizaRegistroRol(data.id, data)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      )
   }
 
 }

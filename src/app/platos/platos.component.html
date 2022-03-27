@@ -1,1 +1,31 @@
-<p>platos works!</p>
+<h1>Platos</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col mx-auto table-responsive">
+      <table *ngIf="peticionPlatos else espera" class="table table-striped table-dark">
+        <thead>
+          <tr class="align-middle">
+            <th class="text-center px-5">#</th>
+            <th>Nombre</th>
+            <th>Foto</th>
+            <th>Categoria</th>
+            <th class="text-center"><button [routerLink]="['/platos/add']" class="btn btn-primary">Añadir Plato</button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="align-middle" *ngFor="let plato of platos">
+            <th class="text-center px-5">{{plato.id}}</th>
+            <td>{{plato.nombre}}</td>
+            <td>{{plato.foto}}</td>
+            <td>{{plato.categoria.nombre}}</td>
+            <td class="d-flex flex-row justify-content-around w-100"><button [routerLink]="['/platos', plato.id]" class="btn btn-primary">Editar Plato</button><button (click)="eliminar(plato.id)" class="btn btn-primary">Eliminar Plato</button></td>
+          </tr>
+          <tr *ngIf="peticionPlatos && platos == null">
+            <th colspan="3">No hay datos</th>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #espera>Esperando datos...</ng-template>
+    </div>
+  </div>
+</div>

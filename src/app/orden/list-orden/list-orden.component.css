@@ -5,5 +5,9 @@ h1
 }
 tr > td:nth-child(2n) , tr > th:nth-child(2n)
 {
-  width: 50%;
+  width: 30%;
+}
+tr > td:nth-child(3n) , tr > th:nth-child(3n)
+{
+  width: 30%;
 }

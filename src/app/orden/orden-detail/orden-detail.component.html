@@ -1,0 +1,36 @@
+<div class="container">
+  <button [routerLink]="['../list']" class="btn btn-primary">Volver</button>
+  <div class="w-75 p-5 mx-auto bg-white rounded">
+    <div *ngIf="peticion != null else espera">
+      <h1 class="mb-4">Orden nº {{orden.id}}</h1>
+      <p>Usuario: {{orden.usuario.usuario}}</p>
+      <p>Fecha: {{orden.fecha}}</p>
+
+      <h2 class="mt-5 mb-4">Platos</h2>
+      <div>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr class="align-middle">
+              <th class="text-center px-5">#</th>
+              <th>Nombre</th>
+              <th>Foto</th>
+              <th>Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="align-middle" *ngFor="let plato of platos">
+              <th class="text-center px-5">{{plato.id}}</th>
+              <td>{{plato.nombre}}</td>
+              <td>{{plato.foto}}</td>
+              <td>{{plato.categoria.nombre}}</td>
+            </tr>
+            <tr *ngIf="platos == null">
+              <th colspan="3">No hay datos</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <ng-template #espera>Esperando datos...</ng-template>
+  </div>
+</div>

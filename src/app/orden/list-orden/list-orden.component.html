@@ -1,0 +1,29 @@
+<h1>Ordenes</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col mx-auto table-responsive">
+      <table *ngIf="peticionOrdenes else espera" class="table table-striped table-dark">
+        <thead>
+          <tr class="align-middle">
+            <th class="text-center px-5">#</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="align-middle" *ngFor="let orden of ordenes">
+            <th class="text-center px-5">{{orden.id}}</th>
+            <td>{{orden.usuario.usuario}}</td>
+            <td>{{orden.fecha}}</td>
+            <td class="text-center"><button [routerLink]="['/orden', orden.id]" class="btn btn-primary">Ver Orden</button></td>
+          </tr>
+          <tr *ngIf="peticionOrdenes && ordenes == null">
+            <th colspan="3">No hay datos</th>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #espera>Esperando datos...</ng-template>
+    </div>
+  </div>
+</div>

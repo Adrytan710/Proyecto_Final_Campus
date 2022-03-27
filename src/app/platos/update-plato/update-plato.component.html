@@ -1,1 +1,30 @@
-<p>update-plato works!</p>
+<div class="container">
+  <button [routerLink]="['../']" class="btn btn-primary">Volver</button>
+  <div class="submit-form w-75 mx-auto">
+    <div *ngIf="!agregado">
+      <form name="form" (ngSubmit)="f.form.valid && guardaRegistro()" #f="ngForm" novalidate>
+        <div class="form-floating mb-4">
+          <input type="text" name="nombre" id="floatingNombre" class="form-control" [class.is-invalid]="nombre.errors && f.submitted" [(ngModel)]="plato.nombre" required #nombre="ngModel"/>
+          <label for="floatingNombre">Nombre Plato</label>
+          <div id="floatingNombre" class="invalid-feedback">
+            Nombre Plato no puede estar vacio!
+          </div>
+        </div>
+        <div class="form-floating mb-4">
+          <select class="form-select" name="categoria" id="floatingCategoria" [(ngModel)]="plato.categoria" [class.is-invalid]="categoria.errors && f.submitted" required #categoria="ngModel">
+            <option [value]="categoria.id" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
+          </select>
+          <label for="floatingCategoria">Categoria</label>
+          <div id="floatingCategoria" class="invalid-feedback">
+            Rol no puede estar vacio!
+          </div>
+        </div>
+        <button class="btn btn-success" type="submit">Actualizar Plato</button>
+      </form>
+    </div>
+    <div *ngIf="agregado">
+      <h4>Plato añadido correctamente</h4>
+      <button (click)="nuevoRegistro()" class="btn btn-success mt-3">Editar Plato</button>
+    </div>
+  </div>
+</div>

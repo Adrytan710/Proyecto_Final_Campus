@@ -8,18 +8,37 @@ import { ApiRestService } from '../_servicios/api-rest.service';
 })
 export class AlergiasComponent implements OnInit {
 
-  alergias: object = {};
+  alergias: any = null;
+  peticionAlergias = false;
 
   constructor(private api: ApiRestService) { }
 
   ngOnInit(): void {
+    this.getAlergias();
+  }
 
+  getAlergias()
+  {
     this.api.getListaAlergias().subscribe(
       data => {
-        console.log(data);
+        this.peticionAlergias = true;
         this.alergias = data;
       }
     )
+  }
+
+  eliminar(id: string)
+  {
+    this.api.eliminaElementoAlergias(id).subscribe(
+      data =>
+      {
+        this.getAlergias();
+      },
+      error =>
+      {
+        console.log(error.message);
+      }
+    );
   }
 
 }

@@ -16,7 +16,6 @@ import { UpdateAlergiaComponent } from './alergias/update-alergia/update-alergia
 import { AddPlatoComponent } from './platos/add-plato/add-plato.component';
 import { UpdatePlatoComponent } from './platos/update-plato/update-plato.component';
 import { AddUsuarioComponent } from './usuarios/add-usuario/add-usuario.component';
-import { UpdateUsuarioComponent } from './usuarios/update-usuario/update-usuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AlergiasUsuarioComponent } from './usuarios/alergias-usuario/alergias-usuario.component';
@@ -24,6 +23,8 @@ import { AlergiasUsuarioComponent } from './usuarios/alergias-usuario/alergias-u
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { ListOrdenComponent } from './orden/list-orden/list-orden.component';
+import { OrdenDetailComponent } from './orden/orden-detail/orden-detail.component';
 
 
 @NgModule({
@@ -43,8 +44,9 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     AddPlatoComponent,
     UpdatePlatoComponent,
     AddUsuarioComponent,
-    UpdateUsuarioComponent,
-    AlergiasUsuarioComponent
+    AlergiasUsuarioComponent,
+    ListOrdenComponent,
+    OrdenDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ApiRestService } from 'src/app/_servicios/api-rest.service';
 
 
@@ -11,7 +10,6 @@ import { ApiRestService } from 'src/app/_servicios/api-rest.service';
 export class AddAlergiaComponent implements OnInit {
 
   alergia : any = {
-    id : 0,  // VERIFICAR EL NUMBER
     nombre : ''
   };
   agregado = false;
@@ -23,14 +21,13 @@ export class AddAlergiaComponent implements OnInit {
 
   guardaRegistro() : void {
     const data = {
-      id : this.alergia.id,
       nombre : this.alergia.nombre
     };
 
     this.alergiaServices.agregaElementoAlergias(data)
       .subscribe(
         respuesta => {
-          console.log(respuesta); //SE PUEDE ELIMINAR
+          console.log(respuesta);
           this.agregado = true;
         },
         error => {
@@ -42,7 +39,6 @@ export class AddAlergiaComponent implements OnInit {
   nuevoRegistro() : void {
     this.agregado = false;
     this.alergia = {
-      id : 0,
       nombre : ''
     }
   };

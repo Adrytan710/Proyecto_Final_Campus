@@ -1,1 +1,29 @@
-<p>usuarios works!</p>
+<h1>Usuarios</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col mx-auto table-responsive">
+      <table *ngIf="peticionUsuarios else espera" class="table table-striped table-dark">
+        <thead>
+          <tr class="align-middle">
+            <th class="text-center px-5">#</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th class="text-center"><button [routerLink]="['/users/add']" class="btn btn-primary">Añadir Usuario</button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="align-middle" *ngFor="let usuario of usuarios">
+            <th class="text-center px-5">{{usuario.id}}</th>
+            <td>{{usuario.usuario}}</td>
+            <td>{{usuario.email}}</td>
+            <td class="d-flex flex-column flex-md-row justify-content-around w-100"><button *ngIf="usuario.id != 1" (click)="eliminar(usuario.id)" class="btn btn-primary">Eliminar Usuario</button><b *ngIf="usuario.id == 1" class="py-1">Este Usuario no se puede modificar</b></td>
+          </tr>
+          <tr *ngIf="peticionUsuarios && usuarios == null">
+            <th colspan="4">No hay datos</th>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #espera>Esperando datos...</ng-template>
+    </div>
+  </div>
+</div>

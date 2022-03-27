@@ -240,7 +240,7 @@ export class ApiRestService {
     return this.http.delete(`${baseAPI}/api/tienen`);
   }
 
-  ubicaPorIdAlergia(id : any) : Observable <object> {
+  ubicaPorIdTieneAlergia(id : any) : Observable <object> {
     return this.http.get(`${baseAPI}/api/tienen/alergia/${id}`);
   }
 

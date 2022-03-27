@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiRestService } from '../_servicios/api-rest.service';
+import { UsersService } from '../_servicios/auth/users.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -7,9 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuariosComponent implements OnInit {
 
-  constructor() { }
+  usuarios: any = null;
+  peticionUsuarios = false;
+
+  constructor(private api: UsersService) { }
 
   ngOnInit(): void {
+    this.getUsuarios();
   }
 
+  getUsuarios()
+  {
+    this.api.getUsuarios().subscribe(
+      data => {
+        this.peticionUsuarios = true;
+        this.usuarios = data;
+      }
+    )
+  }
+
+  eliminar(id: string)
+  {
+    this.api.deleteUsuario(id).subscribe(
+      data =>
+      {
+        this.getUsuarios();
+      },
+      error =>
+      {
+        console.log(error.message);
+      }
+    );
+  }
 }

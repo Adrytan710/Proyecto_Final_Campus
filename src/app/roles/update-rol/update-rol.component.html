@@ -1,1 +1,22 @@
-<p>update-rol works!</p>
+<div class="container">
+  <button [routerLink]="['../']" class="btn btn-primary">Volver</button>
+  <div class="submit-form w-75 mx-auto">
+    <div *ngIf="recogidaDatos else espera || !actualizado">
+      <form name="form" (ngSubmit)="f.form.valid && actualizaRegistro()" #f="ngForm" novalidate>
+        <div class="form-floating mb-4">
+          <input type="text" name="nombre" id="floatingNombre" class="form-control" [class.is-invalid]="nombre.errors && f.submitted" [(ngModel)]="rol.nombre" required #nombre="ngModel"/>
+          <label for="floatingNombre">Nombre Rol</label>
+          <div id="floatingNombre" class="invalid-feedback">
+            Nombre Rol no puede estar vacio!
+          </div>
+        </div>
+        <button class="btn btn-success" type="submit">Actualizar Rol</button>
+      </form>
+    </div>
+    <div *ngIf="actualizado">
+      <h4>Rol añadido correctamente</h4>
+      <button (click)="actualizado = false" class="btn btn-success mt-3">Editar Rol</button>
+    </div>
+    <ng-template #espera>Esperando datos...</ng-template>
+  </div>
+</div>

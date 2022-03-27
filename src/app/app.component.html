@@ -13,6 +13,9 @@
           <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/orden']">Nueva Orden</a>
         </li>
         <li class="nav-item" *ngIf="showAdminBoard">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/orden/list']">Ver Ordenes</a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
           <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/alergias']">Alergias</a>
         </li>
         <li class="nav-item" *ngIf="showAdminBoard">

@@ -1,1 +1,45 @@
-<p>add-usuario works!</p>
+<div class="container">
+  <button [routerLink]="['../']" class="btn btn-primary">Volver</button>
+  <div class="submit-form w-75 mx-auto">
+    <div *ngIf="!agregado">
+      <form name="form" (ngSubmit)="f.form.valid && guardaRegistro()" #f="ngForm" novalidate>
+        <div class="form-floating mb-4">
+          <input type="text" name="nombre" id="floatingNombre" class="form-control" [class.is-invalid]="nombre.errors && f.submitted" [(ngModel)]="usuario.nombre" required #nombre="ngModel"/>
+          <label for="floatingNombre">Nombre Usuario</label>
+          <div id="floatingNombre" class="invalid-feedback">
+            Nombre Usuario no puede estar vacio!
+          </div>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="text" name="pass" id="floatingPass" class="form-control" [class.is-invalid]="pass.errors && f.submitted" [(ngModel)]="usuario.pass_usuario" required #pass="ngModel"/>
+          <label for="floatingPass">Contraseña Usuario</label>
+          <div id="floatingPass" class="invalid-feedback">
+            Contraseña Usuario no puede estar vacio!
+          </div>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="email" name="email" id="floatingEmail" class="form-control" [class.is-invalid]="email.errors && f.submitted" [(ngModel)]="usuario.email" required email #email="ngModel" />
+          <label for="floatingEmail">Email Usuario</label>
+          <div id="floatingEmail" class="invalid-feedback">
+            <div *ngIf="email.errors?.['required']">Email Usuario no puede estar vacio!</div>
+            <div *ngIf="email.errors?.['email']">Email Usuario tiene que ser un email valido!</div>
+          </div>
+        </div>
+        <div class="form-floating mb-4">
+          <select class="form-select" name="rol" id="floatingRol" [(ngModel)]="usuario.rol" [class.is-invalid]="rol.errors && f.submitted" required #rol="ngModel">
+            <option [value]="rol.id" *ngFor="let rol of roles">{{rol.nombre}}</option>
+          </select>
+          <label for="floatingRol">Rol</label>
+          <div id="floatingRol" class="invalid-feedback">
+            Rol no puede estar vacio!
+          </div>
+        </div>
+        <button class="btn btn-success" type="submit">Agregar Usuario</button>
+      </form>
+    </div>
+    <div *ngIf="agregado">
+      <h4>Usuario añadido correctamente</h4>
+      <button (click)="nuevoRegistro()" class="btn btn-success mt-3">Nuevo Usuario</button>
+    </div>
+  </div>
+</div>
