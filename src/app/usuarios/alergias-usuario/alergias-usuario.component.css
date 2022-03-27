@@ -1,0 +1,36 @@
+main {
+  width: 50%;
+  height: 450px;
+  background-color: rgb(37, 37, 37);
+  margin-top: 100px;
+  margin-left: 25%;
+  border-radius: 25px;
+}
+
+header {
+  padding-top: 50px;
+  font-size: 35px;
+  text-align: center;
+  color: aliceblue;
+}
+
+p {
+  font-size: 15px;
+  color: aliceblue;
+}
+
+form {
+  margin: 5%;
+  color: aliceblue;
+}
+
+#check {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+#check > div {
+  display: flex;
+  flex-direction: column;
+}
