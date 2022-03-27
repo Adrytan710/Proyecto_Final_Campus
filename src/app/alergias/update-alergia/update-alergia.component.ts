@@ -20,11 +20,11 @@ export class UpdateAlergiaComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.alergias.ubicaPorIdAlergia(this.id)
+    /*this.alergias.ubicaPorIdAlergia(this.id)
       .subscribe(
         respuesta => {
         this.alergias = respuesta;
-      });
+      });*/
   }
 
   actualizaRegistro() : void {
