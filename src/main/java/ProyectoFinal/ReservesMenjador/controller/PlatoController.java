@@ -9,6 +9,7 @@ import ProyectoFinal.ReservesMenjador.services.CategoriaServicesImpl;
 import ProyectoFinal.ReservesMenjador.services.PlatoServicesImpl;
 
 @RestController
+@CrossOrigin(origins = "*", allowCredentials = "true", methods= {RequestMethod.OPTIONS,RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class PlatoController {
 
