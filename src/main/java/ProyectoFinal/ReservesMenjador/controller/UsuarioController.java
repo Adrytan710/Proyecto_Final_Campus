@@ -18,7 +18,7 @@ import ProyectoFinal.ReservesMenjador.dto.Usuario;
 import ProyectoFinal.ReservesMenjador.dao.IUsuarioDAO;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", allowCredentials = "true", methods= {RequestMethod.OPTIONS,RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class UsuarioController {
 
 	private IUsuarioDAO iUsuarioDAO;

@@ -7,6 +7,7 @@ import ProyectoFinal.ReservesMenjador.dto.*;
 import ProyectoFinal.ReservesMenjador.services.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowCredentials = "true", methods= {RequestMethod.OPTIONS,RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class PeticionController {
 
