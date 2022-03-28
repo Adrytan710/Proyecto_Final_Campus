@@ -1,6 +1,6 @@
 main {
   width: 50%;
-  height: 450px;
+  height: 650px;
   background-color: rgb(37, 37, 37);
   margin-top: 100px;
   margin-left: 25%;
@@ -15,7 +15,7 @@ header {
 }
 
 p {
-  font-size: 15px;
+  font-size: 25px;
   color: aliceblue;
 }
 
@@ -33,4 +33,12 @@ form {
 #check > div {
   display: flex;
   flex-direction: column;
+}
+
+input {
+  color: black;
+}
+
+button {
+  width: 100%;
 }

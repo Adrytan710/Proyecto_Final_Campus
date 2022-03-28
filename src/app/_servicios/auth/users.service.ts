@@ -33,6 +33,10 @@ export class UsersService {
     return this.http.get(AUTH_API + `usuarios/`, httpOptions);
   }
 
+  ubicaUsuarioPorId(id : any)  : Observable <any> {
+    return this.http.get(AUTH_API + `usuarios/${id}/`, httpOptions);
+  }
+
   addUsuario(usuario: string, pass_usuario: string, email: string, rol: object): Observable<any>
   {
     return this.http.post(AUTH_API + `usuarios/`, {
