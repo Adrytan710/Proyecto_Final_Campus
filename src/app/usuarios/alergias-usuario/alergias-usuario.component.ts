@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../_servicios/auth/users.service';
 import { ApiRestService } from 'src/app/_servicios/api-rest.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-alergias-usuario',
@@ -9,10 +10,13 @@ import { ApiRestService } from 'src/app/_servicios/api-rest.service';
 })
 export class AlergiasUsuarioComponent implements OnInit {
 
-  usuarios : any = null;
+  checkbox : any = false;
+  //usuarios : any = null;
   alergias : any = null;
   usuario : any = null;
+
   id : any = null;
+
   tienen : any = {
     usuario : '',
     alergia : ''
@@ -20,11 +24,11 @@ export class AlergiasUsuarioComponent implements OnInit {
   agregado = false;
   datosRecibidos = false;
 
-  constructor(private userServices : UsersService, private restServ : ApiRestService) { }
+  constructor(private userServices : UsersService, private restServ : ApiRestService) {}
 
   ngOnInit(): void {
    this.ubicaUsuarioPorId();
-   //this.ubicaAlergias();
+   this.ubicaAlergias();
    //this.ubicaUsuarios();
   }
 
@@ -42,7 +46,7 @@ export class AlergiasUsuarioComponent implements OnInit {
     );
  }
 
- /*ubicaAlergias() : void {
+ ubicaAlergias() : void {
     this.restServ.getListaAlergias()
       .subscribe (
         datos => {
@@ -53,7 +57,7 @@ export class AlergiasUsuarioComponent implements OnInit {
         }
       )
  }
-
+/*
  ubicaUsuarios() : void {
   this.userServices.getUsuarios()
   .subscribe (
@@ -66,22 +70,27 @@ export class AlergiasUsuarioComponent implements OnInit {
   );
  }*/
 
+ checkBox() {
+   console.log(this.checkBox);
+ }
+
  guardaNuevoRegistro() : void {
    const registros = {
      usuario : {},
      alergia : {}
    };
 
-  // console.log(registro);
     this.id = window.sessionStorage.getItem('auth-username');
     this.userServices.ubicaUsuarioPorId(this.id)
       .subscribe(
         dato => {
         registros.usuario = dato;
         console.log(dato);
-        this.restServ.ubicaporIdAlergias(this.tienen.id_alergia)
+        //this.tienen.alergia = 4;
+        this.restServ.ubicaporIdAlergias(this.tienen.alergia)
            .subscribe(
             datos =>{
+            console.log(datos);
             registros.alergia = datos;
             console.log(datos);
             this.restServ.agregaElementoTieneAlergia(registros)
