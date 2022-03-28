@@ -33,6 +33,7 @@ form {
 #check > div {
   display: flex;
   flex-direction: column;
+
 }
 
 input {

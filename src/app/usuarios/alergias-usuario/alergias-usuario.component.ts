@@ -11,7 +11,6 @@ import {FormControl} from '@angular/forms';
 export class AlergiasUsuarioComponent implements OnInit {
 
   checkbox : any = false;
-  //usuarios : any = null;
   alergias : any = null;
   usuario : any = null;
 
@@ -29,7 +28,6 @@ export class AlergiasUsuarioComponent implements OnInit {
   ngOnInit(): void {
    this.ubicaUsuarioPorId();
    this.ubicaAlergias();
-   //this.ubicaUsuarios();
   }
 
  ubicaUsuarioPorId() : void {
@@ -38,7 +36,6 @@ export class AlergiasUsuarioComponent implements OnInit {
     .subscribe (
       respuesta => {
         this.usuario = respuesta;
-        //console.log(respuesta);
       },
       error => {
         console.log(error);
@@ -58,21 +55,12 @@ export class AlergiasUsuarioComponent implements OnInit {
       )
  }
 /*
- ubicaUsuarios() : void {
-  this.userServices.getUsuarios()
-  .subscribe (
-    datos => {
-      this.usuarios = datos;
-    },
-    error => {
-      console.log(error);
-    }
-  );
+ giveMeId($event : any) {
+   const id = $event.target.value;
+   console.log(this.id);
+   const isChecked = $event.target.checked;
+   console.log(id, isChecked);
  }*/
-
- checkBox() {
-   console.log(this.checkBox);
- }
 
  guardaNuevoRegistro() : void {
    const registros = {
@@ -89,7 +77,7 @@ export class AlergiasUsuarioComponent implements OnInit {
         //this.tienen.alergia = 4;
         this.restServ.ubicaporIdAlergias(this.tienen.alergia)
            .subscribe(
-            datos =>{
+            datos => {
             console.log(datos);
             registros.alergia = datos;
             console.log(datos);
