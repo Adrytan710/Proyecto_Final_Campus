@@ -11,7 +11,6 @@ import ProyectoFinal.ReservesMenjador.services.OrdenServicesImpl;
 import ProyectoFinal.ReservesMenjador.services.UsuarioServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "*", allowCredentials = "true", methods= {RequestMethod.OPTIONS,RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("/api") // POR DETERMINAR SU USO
 public class OrdenController {
 
