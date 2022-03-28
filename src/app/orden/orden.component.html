@@ -1,8 +1,8 @@
-<h2>ELIGE TU ORDEN</h2>
+<h2 *ngIf="!peticionEnviada" >Elige tu orden</h2>
 
 <!-- Tabla exterior izquierda -->
 
-<div class="container-fluid h-100 d-flex align-items-start">
+<div *ngIf="!peticionEnviada" class="container-fluid h-100 d-flex flex-column flex-md-row justify-content-around mt-5 align-items-center align-items-md-start">
   <table class="tabla-ext table table-dark table-hover w-50 mx-left">
     <!-- Titulo -->
     <thead>
@@ -13,31 +13,22 @@
     <!-- Entrante -->
     <tbody>
       <tr>
-        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiColapseEntrante" role="button" aria-expanded="false" aria-controls="multiColapseEntrante">
           Entrante <i class="fa fa-sort-desc" aria-hidden="true"></i></a>
-          <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="collapse multi-collapse" id="multiColapseEntrante">
             <div class="card card-body bg-secondary">
               <!-- Tabla interior -->
               <table class="table table-dark">
                 <tr class="colum bg-dark">
                   <th></th>
                   <th>Nombre</th>
-                  <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
                 <tr class="colum bg-secondary" *ngFor="let plato of platos">
                   <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
                   <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
                   <td *ngIf="plato.categoria.id == 1">
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td *ngIf="plato.categoria.id == 1">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" [(ngModel)]="formCheckbox[plato.id-1]" (ngModelChange)="addPlato(plato)" type="checkbox" value="{{plato.nombre}}">
                   </td>
                 </tr>
               </table>
@@ -46,31 +37,22 @@
       </tr>
       <!-- Primer plato -->
       <tr>
-        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiCollapsePrimerPlato" role="button" aria-expanded="false" aria-controls="multiCollapsePrimerPlato">
           Primer plato <i class="fa fa-sort-desc" aria-hidden="true"></i></a>
-          <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="collapse multi-collapse" id="multiCollapsePrimerPlato">
             <div class="card card-body bg-secondary">
               <!-- Tabla interior -->
               <table class="table table-dark table-hover">
                 <tr class="colum bg-dark">
                   <th></th>
                   <th>Nombre</th>
-                  <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
                 <tr class="colum bg-secondary" *ngFor="let plato of platos">
-                  <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
-                  <td *ngIf="plato.categoria.id == 1">
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td  *ngIf="plato.categoria.id == 1">
-                    <input class="form-check-input" type="checkbox" value="">
+                  <td *ngIf="plato.categoria.id == 2"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
+                  <td *ngIf="plato.categoria.id == 2">{{plato.nombre}}</td>
+                  <td *ngIf="plato.categoria.id == 2">
+                    <input class="form-check-input" [(ngModel)]="formCheckbox[plato.id-1]" (ngModelChange)="addPlato(plato)" type="checkbox" value="{{plato.nombre}}">
                   </td>
                 </tr>
               </table>
@@ -79,31 +61,22 @@
       </tr>
       <!-- Segundo plato -->
       <tr>
-        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiCollapseSegundoPlato" role="button" aria-expanded="false" aria-controls="multiCollapseSegundoPlato">
           Segundo Plato <i class="fa fa-sort-desc" aria-hidden="true"></i></a>
-          <div class="collapse multi-collapse" id="multiCollapseExample3">
+          <div class="collapse multi-collapse" id="multiCollapseSegundoPlato">
             <div class="card card-body bg-secondary">
               <!-- Tabla interior -->
               <table class="table table-dark table-hover">
                 <tr class="colum bg-dark">
                   <th></th>
                   <th>Nombre</th>
-                  <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
                 <tr class="colum bg-secondary" *ngFor="let plato of platos">
-                  <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
-                  <td *ngIf="plato.categoria.id == 1">
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td *ngIf="plato.categoria.id == 1">
-                    <input class="form-check-input" type="checkbox" value="">
+                  <td *ngIf="plato.categoria.id == 3"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
+                  <td *ngIf="plato.categoria.id == 3">{{plato.nombre}}</td>
+                  <td *ngIf="plato.categoria.id == 3">
+                    <input class="form-check-input" [(ngModel)]="formCheckbox[plato.id-1]" (ngModelChange)="addPlato(plato)" type="checkbox" value="{{plato.nombre}}">
                   </td>
                 </tr>
               </table>
@@ -112,32 +85,22 @@
       </tr>
       <!-- Postre -->
       <tr>
-        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="btn btn-dark d-flex" data-bs-toggle="collapse" href="#multiCollapsePostre" role="button" aria-expanded="false" aria-controls="multiCollapsePostre">
           Postre <i class="fa fa-sort-desc" aria-hidden="true"></i></a>
-          <div class="collapse multi-collapse" id="multiCollapseExample4">
+          <div class="collapse multi-collapse" id="multiCollapsePostre">
             <div class="card card-body bg-secondary">
               <!-- Tabla interior -->
               <table class="table table-dark table-hover">
                 <tr class="colum bg-dark">
                   <th></th>
                   <th>Nombre</th>
-                  <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
-                <tr class="colum bg-secondary" *ngFor="let plato of platos" [formGroup]="form">
-                  <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
-                  <td *ngIf="plato.categoria.id == 1">
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td *ngIf="plato.categoria.id == 1">
-                    <input class="form-check-input" type="checkbox" value="{{plato}}"
-                    formArrayName="platosSelecteds" formControlName="{{plato.categoria.nombre}}" (change)="onCheckboxChange($event)">
+                <tr class="colum bg-secondary" *ngFor="let plato of platos">
+                  <td *ngIf="plato.categoria.id == 4"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
+                  <td *ngIf="plato.categoria.id == 4">{{plato.nombre}}</td>
+                  <td *ngIf="plato.categoria.id == 4">
+                    <input class="form-check-input" [(ngModel)]="formCheckbox[plato.id-1]" (ngModelChange)="addPlato(plato)" type="checkbox" value="{{plato.nombre}}">
                   </td>
                 </tr>
               </table>
@@ -149,35 +112,39 @@
 
   <!-- Recogida de datos -->
 
-  <table class="tabla-ext2 table table-dark w-25 d-block">
+  <table class="tabla-ext2 table table-dark w-25">
     <thead>
       <tr>
         <th>Categorías</th>
-        <th>Platos seleccionados</th>
+        <th>Nº Platos seleccionados</th>
       </tr>
     </thead>
     <tbody>
-      <tr [formGroup]="form">
+      <tr>
         <th>Entrante</th>
-        <td>{{form.value | json}}</td>
+        <td class="text-center">{{formContador["Entrante"]}}</td>
       </tr>
-      <tr [formGroup]="form">
+      <tr>
         <th>Primer plato</th>
-        <td>{{form.value | json}}</td>
+        <td class="text-center">{{formContador["Primer_Plato"]}}</td>
       </tr>
-      <tr [formGroup]="form">
+      <tr>
         <th>Segundo plato</th>
-        <td>{{form.value | json}}</td>
+        <td class="text-center">{{formContador["Segundo_Plato"]}}</td>
       </tr>
-      <tr [formGroup]="form">
+      <tr>
         <th>Postre</th>
-        <td>{{form.value | json}}</td>
+        <td class="text-center">{{formContador["Postre"]}}</td>
       </tr>
       <tr>
         <td colspan="2">
-          <button class="boton btn btn-success w-100">Enviar datos</button>
+          <button (click)="enviarDatos()" class="boton btn btn-success w-100">Enviar datos</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+<div class="container mt-5" *ngIf="peticionEnviada">
+  <h4>Orden creada correctamente</h4>
+  <button [routerLink]="['/']"  class="btn btn-success mt-3">Volver</button>
 </div>
