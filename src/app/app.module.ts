@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
 import { AlergiasUsuarioComponent } from './usuarios/alergias-usuario/alergias-usuario.component';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ListOrdenComponent } from './orden/list-orden/list-orden.component';
 import { OrdenDetailComponent } from './orden/orden-detail/orden-detail.component';
@@ -53,7 +53,8 @@ import { OrdenDetailComponent } from './orden/orden-detail/orden-detail.componen
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

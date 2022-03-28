@@ -2,7 +2,7 @@
 
 <!-- Tabla exterior izquierda -->
 
-<div class="container-fluid h-100 d-flex">
+<div class="container-fluid h-100 d-flex align-items-start">
   <table class="tabla-ext table table-dark table-hover w-50 mx-left">
     <!-- Titulo -->
     <thead>
@@ -25,10 +25,10 @@
                   <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
+                <tr class="colum bg-secondary" *ngFor="let plato of platos">
+                  <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
+                  <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
+                  <td *ngIf="plato.categoria.id == 1">
                     <select class="form-select text-light" aria-label="Default select example">
                       <option selected>1</option>
                       <option value="1">2</option>
@@ -36,22 +36,7 @@
                       <option value="4">4</option>
                     </select>
                   </td>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="">
-                  </td>
-                </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td>
+                  <td *ngIf="plato.categoria.id == 1">
                     <input class="form-check-input" type="checkbox" value="">
                   </td>
                 </tr>
@@ -73,10 +58,10 @@
                   <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
+                <tr class="colum bg-secondary" *ngFor="let plato of platos">
+                  <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
+                  <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
+                  <td *ngIf="plato.categoria.id == 1">
                     <select class="form-select text-light" aria-label="Default select example">
                       <option selected>1</option>
                       <option value="1">2</option>
@@ -84,22 +69,7 @@
                       <option value="4">4</option>
                     </select>
                   </td>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="">
-                  </td>
-                </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td>
+                  <td  *ngIf="plato.categoria.id == 1">
                     <input class="form-check-input" type="checkbox" value="">
                   </td>
                 </tr>
@@ -121,10 +91,10 @@
                   <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
+                <tr class="colum bg-secondary" *ngFor="let plato of platos">
+                  <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
+                  <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
+                  <td *ngIf="plato.categoria.id == 1">
                     <select class="form-select text-light" aria-label="Default select example">
                       <option selected>1</option>
                       <option value="1">2</option>
@@ -132,22 +102,7 @@
                       <option value="4">4</option>
                     </select>
                   </td>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="">
-                  </td>
-                </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td>
+                  <td *ngIf="plato.categoria.id == 1">
                     <input class="form-check-input" type="checkbox" value="">
                   </td>
                 </tr>
@@ -169,10 +124,10 @@
                   <th>Cantidad</th>
                   <th>Selección</th>
                 </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
+                <tr class="colum bg-secondary" *ngFor="let plato of platos" [formGroup]="form">
+                  <td *ngIf="plato.categoria.id == 1"><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
+                  <td *ngIf="plato.categoria.id == 1">{{plato.nombre}}</td>
+                  <td *ngIf="plato.categoria.id == 1">
                     <select class="form-select text-light" aria-label="Default select example">
                       <option selected>1</option>
                       <option value="1">2</option>
@@ -180,23 +135,9 @@
                       <option value="4">4</option>
                     </select>
                   </td>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="">
-                  </td>
-                </tr>
-                <tr class="colum bg-secondary">
-                  <td><img src="../../assets/imagenes/imagen1.jpg" width="50px" height="50px"></td>
-                  <td>Nombre</td>
-                  <td>
-                    <select class="form-select text-light" aria-label="Default select example">
-                      <option selected>1</option>
-                      <option value="1">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input class="form-check-input" type="checkbox" value="">
+                  <td *ngIf="plato.categoria.id == 1">
+                    <input class="form-check-input" type="checkbox" value="{{plato}}"
+                    formArrayName="platosSelecteds" formControlName="{{plato.categoria.nombre}}" (change)="onCheckboxChange($event)">
                   </td>
                 </tr>
               </table>
@@ -216,27 +157,27 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr [formGroup]="form">
         <th>Entrante</th>
-        <td>1</td>
+        <td>{{form.value | json}}</td>
       </tr>
-      <tr>
+      <tr [formGroup]="form">
         <th>Primer plato</th>
-        <td>2</td>
+        <td>{{form.value | json}}</td>
       </tr>
-      <tr>
+      <tr [formGroup]="form">
         <th>Segundo plato</th>
-        <td>3</td>
+        <td>{{form.value | json}}</td>
+      </tr>
+      <tr [formGroup]="form">
+        <th>Postre</th>
+        <td>{{form.value | json}}</td>
       </tr>
       <tr>
-        <th>Postre</th>
-        <td>4</td>
+        <td colspan="2">
+          <button class="boton btn btn-success w-100">Enviar datos</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-<!-- Botón enviar -->
-
-<button class="boton btn btn-success">Enviar datos</button>
-

@@ -27,7 +27,5 @@ i {
 }
 
 .boton {
-  float: right;
-  margin-right: 280px;
+  text-align: center;
 }
-
