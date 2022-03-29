@@ -2,8 +2,6 @@ package ProyectoFinal.ReservesMenjador.security;
 
 import static ProyectoFinal.ReservesMenjador.security.Constants.LOGIN_URL;
 
-import java.util.Arrays;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -61,11 +59,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        //configuration.setAllowedOrigins(Arrays.asList("main.d2ckn95sow20us.amplifyapp.com/"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues().combine(configuration));
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
 		return source;
 	}
 }
