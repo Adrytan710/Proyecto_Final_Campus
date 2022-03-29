@@ -48,16 +48,36 @@
 
 <div align="center"><img src="img/ordenes.PNG"></div>
 <h6>Realizar un pedido </h6>
+<div align="center"><img src="img/ordenUsuario.PNG"></div>
+
 <h6>Editar perfil</h6>
-<h6>Salir del sistema</h6>
+
+<div align="center"><img src="img/perfilUser.PNG"></div>
+
 <h4>Administrador :</h4>
 <h6>Vistas administrador </h6>
-<h6>Ver catálogo de platos </h6>
+
+<div align="center"><img src="img/vistaAdmin.PNG"></div>
 <h6>Editar catálogo de platos </h6>
-<h6>Realizar un pedido </h6>
-<h6>Editar perfil</h6>
-<h6>Salir del sistema</h6>
-        
+
+<div align="center"><img src="img/editaPlato1.PNG"></div>
+
+<div align="center"><img src="img/editarPlato2.PNG"></div>
+
+<div align="center"><img src="img/editaPlato3.PNG"></div>
+
+<div align="center"><img src="img/editaPlato4.PNG"></div>
+<h6>Administrar catálogo de órdenes </h6>
+
+<div align="center"><img src="img/orden1.PNG"></div>
+
+<div align="center"><img src="img/orden2.PNG"></div>
+<h6>Administración de Usuarios</h6>
+
+<div align="center"><img src="img/usuario1.PNG"></div>
+<h6>Administración de Roles</h6>
+
+<div align="center"><img src="img/rol.PNG"></div>
 </div> 
 
 
