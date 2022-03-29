@@ -7,7 +7,7 @@
 - Isabel Calzadilla.
 - Joan Rofes.
 
-<div align="center"><img src="img/logo.PNG"></div>
+<div align="center"><img src="modeloRelacional/logo.PNG"></div>
 <div>
 <h1 style="text-align: center; color : blueviolet ">Nombre de Aplicación : T-Eats.</h1>
 
