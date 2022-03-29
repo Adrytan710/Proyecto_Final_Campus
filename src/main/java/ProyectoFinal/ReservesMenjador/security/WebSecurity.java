@@ -1,7 +1,6 @@
 package ProyectoFinal.ReservesMenjador.security;
 
 import static ProyectoFinal.ReservesMenjador.security.Constants.LOGIN_URL;
-//import static ProyectoFinal.ReservesMenjador.security.Constants.SWAGGER_DOCS;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -61,7 +60,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
 		return source;
 	}
 }
