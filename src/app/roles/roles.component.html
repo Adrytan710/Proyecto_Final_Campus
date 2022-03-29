@@ -7,14 +7,14 @@
           <tr class="align-middle">
             <th class="text-center px-5">#</th>
             <th>Nombre</th>
-            <th class="text-center"><button [routerLink]="['/roles/add']" class="btn btn-primary">Añadir Rol</button></th>
+            <th class="text-center"><button [routerLink]="['/roles/add']" class="btn btn-primary"><i class="fas fa-plus"></i></button></th>
           </tr>
         </thead>
         <tbody>
           <tr class="align-middle" *ngFor="let rol of roles">
             <th class="text-center px-5">{{rol.id}}</th>
             <td>{{rol.nombre}}</td>
-            <td class="d-flex flex-row justify-content-around w-100"><button *ngIf="rol.id != 1" [routerLink]="['/roles', rol.id]" class="btn btn-primary">Editar Rol</button><button *ngIf="rol.id != 1" (click)="eliminar(rol.id)" class="btn btn-primary">Eliminar Rol</button><b *ngIf="rol.id == 1" class="py-1">Este rol no se puede modificar</b></td>
+            <td class="d-flex flex-row justify-content-center w-100"><button *ngIf="rol.id != 1" [routerLink]="['/roles', rol.id]" class="btn btn-success me-5"><i class="fas fa-edit"></i></button><button *ngIf="rol.id != 1" (click)="eliminar(rol.id)" class="btn btn-danger"><i class="fas fa-trash"></i></button><b *ngIf="rol.id == 1" class="py-1">Este rol no se puede modificar</b></td>
           </tr>
           <tr *ngIf="peticionRoles && roles == null">
             <th colspan="3">No hay datos</th>

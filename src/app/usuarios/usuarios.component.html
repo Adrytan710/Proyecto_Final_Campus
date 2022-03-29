@@ -8,7 +8,7 @@
             <th class="text-center px-5">#</th>
             <th>Nombre</th>
             <th>Email</th>
-            <th class="text-center"><button [routerLink]="['/users/add']" class="btn btn-primary">Añadir Usuario</button></th>
+            <th class="text-center"><button [routerLink]="['/users/add']" class="btn btn-primary"><i class="fas fa-plus"></i></button></th>
           </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
             <th class="text-center px-5">{{usuario.id}}</th>
             <td>{{usuario.usuario}}</td>
             <td>{{usuario.email}}</td>
-            <td class="d-flex flex-column flex-md-row justify-content-around w-100"><button *ngIf="usuario.id != 1" (click)="eliminar(usuario.id)" class="btn btn-primary">Eliminar Usuario</button><b *ngIf="usuario.id == 1" class="py-1">Este Usuario no se puede modificar</b></td>
+            <td class="d-flex flex-column flex-md-row justify-content-around w-100"><button *ngIf="usuario.id != 1" (click)="eliminar(usuario.id)" class="btn btn-danger"><i class="fas fa-trash"></i></button><b *ngIf="usuario.id == 1" class="py-1">Este Usuario no se puede modificar</b></td>
           </tr>
           <tr *ngIf="peticionUsuarios && usuarios == null">
             <th colspan="4">No hay datos</th>
