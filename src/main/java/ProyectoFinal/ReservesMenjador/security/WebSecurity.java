@@ -46,7 +46,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		httpSecurity
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.cors().and()
-			.csrf().disable()
+			//.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
 			.antMatchers("/swagger-ui.html", "/v2/api-docs", "/webjars/**","/swagger-resources/**").permitAll()
 			.anyRequest().authenticated().and()
@@ -64,8 +64,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	CorsConfigurationSource corsConfigurationSource() {
 		final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(ImmutableList.of("*"));
-        configuration.setAllowedMethods(ImmutableList.of("HEAD",
-                "GET", "POST", "PUT", "DELETE", "PATCH"));
+        configuration.setAllowedMethods(ImmutableList.of("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
         // setAllowCredentials(true) is important, otherwise:
         // The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.
         configuration.setAllowCredentials(true);
