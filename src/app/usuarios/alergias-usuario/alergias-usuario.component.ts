@@ -10,8 +10,9 @@ import {FormControl} from '@angular/forms';
 })
 export class AlergiasUsuarioComponent implements OnInit {
 
-  checkbox : any = false;
+  checkbox : any;
   alergias : any = null;
+  alergia : any = null;
   usuario : any = null;
 
   id : any = null;
@@ -22,6 +23,7 @@ export class AlergiasUsuarioComponent implements OnInit {
   }
   agregado = false;
   datosRecibidos = false;
+  alergys : Array <any> = [];
 
   constructor(private userServices : UsersService, private restServ : ApiRestService) {}
 
@@ -48,20 +50,33 @@ export class AlergiasUsuarioComponent implements OnInit {
       .subscribe (
         datos => {
           this.alergias = datos;
+          this.datosRecibidos = true;
+          this.checkbox = [];
+          for(const alergy of this.alergias) { //CONSTANSTE?
+            this.checkbox.push(false);
+          }
         },
         error => {
           console.log(error);
         }
       )
  }
-/*
- giveMeId($event : any) {
-   const id = $event.target.value;
-   console.log(this.id);
-   const isChecked = $event.target.checked;
-   console.log(id, isChecked);
- }*/
 
+
+ almacenaAlergias(alergy : any) {
+   const id = alergy.id;
+   if(this.checkbox[id - 1]){
+     this.alergys.push(alergy);
+   } else {
+     let array = [];
+     for(const alergyArray of this.alergys) {
+       if(alergyArray.id != id) {
+        array.push(alergy);
+       }
+     }
+     this.alergys = array;
+   }
+ }
  guardaNuevoRegistro() : void {
    const registros = {
      usuario : {},
@@ -74,28 +89,49 @@ export class AlergiasUsuarioComponent implements OnInit {
         dato => {
         registros.usuario = dato;
         console.log(dato);
-        //this.tienen.alergia = 4;
-        this.restServ.ubicaporIdAlergias(this.tienen.alergia)
+       //this.tienen.alergia = 2;
+        /*this.restServ.ubicaporIdAlergias(this.tienen.alergia)
            .subscribe(
             datos => {
             console.log(datos);
             registros.alergia = datos;
-            console.log(datos);
+            console.log(datos);*/
             this.restServ.agregaElementoTieneAlergia(registros)
               .subscribe(
                 data => {
-                  console.log(registros);
-                  console.log(data);
-                  this.agregado = true;
+                console.log(registros);
+                 // console.log(data);
+                  //this.agregado = true;
+
+                this.restServ.getListaTieneAlergia()
+                    .subscribe(
+                      response => {
+                        let alerg : Array <any> | any = response;
+                        let aler = alerg[alerg.length-1];
+
+                        for(const alergi of this.alergys) {
+                          this.restServ.agregaElementoAlergias({aler, alergi})
+                            .subscribe(
+                              respuesta => {
+                                this.agregado = true;
+                                },
+                              error => {
+                                console.log(error);
+                              }
+                            )
+                        }
+                      }
+                    )
+
                   },
                   error => {
                     console.log(error);
                   }
-              );
-              }
+             // );
+             // }
             );
         }
-      );
+     );
  }
 
  nuevoValor() : void {
