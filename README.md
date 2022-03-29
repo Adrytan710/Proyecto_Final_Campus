@@ -5,9 +5,8 @@
 - Isabel Calzadilla.
 - Joan Rofes.
 
-<div style="align: center"> ![image](https://user-images.githubusercontent.com/36207623/160592370-fe6ab921-756d-4381-af52-a442e99812b4.png)
-</div>
-
+<div align="center"><img src="img/logo.PNG"></div>
+<div>
 <h1 style="text-align: center; color : blueviolet ">Nombre de Aplicación : T-Eats.</h1>
 
 
@@ -40,12 +39,14 @@
 
 <h2 id="casos">Casos de Uso</h2>
 
-<div style="align: center"> ![image](https://user-images.githubusercontent.com/36207623/160592674-8ebb4f68-5d41-45f4-9048-67a3f20166ad.png)
-
-</div>
+<div align="center"><img src="img/caso.png"></div>
 <h4>Usuario :</h4>
-<h6>Solicitar alta de Usuario </h6>
+<h6>Inicio sesión de Usuario </h6>
+
+<div align="center"><img src="img/ingreso.png"></div>
 <h6>Ver catálogo de platos </h6>
+
+<div align="center"><img src="img/ordenes.PNG"></div>
 <h6>Realizar un pedido </h6>
 <h6>Editar perfil</h6>
 <h6>Salir del sistema</h6>
