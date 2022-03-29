@@ -12,134 +12,128 @@ export class AlergiasUsuarioComponent implements OnInit {
 
   checkbox : any;
   alergias : any = null;
-  alergia : any = null;
-  usuario : any = null;
+  usuario: any = '';
+  tieneAlergias: any;
 
-  id : any = null;
-
-  tienen : any = {
-    usuario : '',
-    alergia : ''
-  }
-  agregado = false;
+  datosGuardados = false;
+  datosEnviados = false;
   datosRecibidos = false;
-  alergys : Array <any> = [];
+  alergiasEnviar : Array <any> = [];
 
   constructor(private userServices : UsersService, private restServ : ApiRestService) {}
 
-  ngOnInit(): void {
-   this.ubicaUsuarioPorId();
-   this.ubicaAlergias();
-  }
-
- ubicaUsuarioPorId() : void {
-  this.id = window.sessionStorage.getItem('auth-username');
-  this.userServices.ubicaUsuarioPorId(this.id)
+  ngOnInit(): void
+  {
+    const id = window.sessionStorage.getItem('auth-username');
+    this.userServices.ubicaUsuarioPorId(id)
     .subscribe (
       respuesta => {
         this.usuario = respuesta;
+        this.getAlergias();
       },
       error => {
         console.log(error);
       }
     );
- }
+  }
 
- ubicaAlergias() : void {
+  getAlergias() : void
+  {
     this.restServ.getListaAlergias()
-      .subscribe (
-        datos => {
-          this.alergias = datos;
-          this.datosRecibidos = true;
-          this.checkbox = [];
-          for(const alergy of this.alergias) { //CONSTANSTE?
-            this.checkbox.push(false);
+    .subscribe (
+      datos => {
+        this.alergias = datos;
+        this.datosRecibidos = true;
+
+        this.checkbox = [];
+        for(let i = 0; i < this.alergias.lenght; i++)
+        {
+          this.checkbox.push(false);
+        }
+
+        this.restServ.ubicaPorNombreUsuario(this.usuario.usuario)
+        .subscribe(
+          data => {
+            this.tieneAlergias = data;
+
+            for(const alergy of this.tieneAlergias)
+            {
+              this.checkbox[alergy.alergia.id-1] = true;
+              this.alergiasEnviar.push(alergy.alergia);
+            }
           }
+        );
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  almacenaAlergias(alergy : any)
+  {
+    this.datosGuardados = false;
+    const id = alergy.id;
+
+    if(this.checkbox[id - 1])
+    {
+      this.alergiasEnviar.push(alergy);
+    }
+    else
+    {
+      let array = [];
+      for(const alergia of this.alergiasEnviar)
+      {
+        if(alergia.id != id)
+        {
+          array.push(alergia);
+        }
+      }
+      this.alergiasEnviar = array;
+    }
+  }
+
+  guardaNuevoRegistro() : void
+  {
+    this.datosEnviados = true;
+
+    let usuario = this.usuario;
+    for(const alergia of this.alergiasEnviar)
+    {
+      this.restServ.agregaElementoTieneAlergia({usuario, alergia})
+      .subscribe(
+        respuesta => {
+          this.datosGuardados = true;
+          this.datosEnviados = false;
+          //for (const alergiaAnterior of this.tieneAlergias)
+          //{
+          //  let estaAlergia = false;
+          //  for (const alergi of this.alergiasEnviar)
+          //  {
+          //    if(alergi.id == alergiaAnterior.id)
+          //    {
+          //      estaAlergia = true;
+          //    }
+          //  }
+          //  if(!estaAlergia)
+          //  {
+          //    this.restServ.eliminaElementoTieneAlergia(alergiaAnterior.id)
+          //    .subscribe(
+          //      data => {
+          //        console.log(data);
+          //      },
+          //      error => {
+          //        console.log(error);
+          //      }
+          //    );
+          //  }
+          //}
         },
         error => {
           console.log(error);
         }
-      )
- }
-
-
- almacenaAlergias(alergy : any) {
-   const id = alergy.id;
-   if(this.checkbox[id - 1]){
-     this.alergys.push(alergy);
-   } else {
-     let array = [];
-     for(const alergyArray of this.alergys) {
-       if(alergyArray.id != id) {
-        array.push(alergy);
-       }
-     }
-     this.alergys = array;
-   }
- }
- guardaNuevoRegistro() : void {
-   const registros = {
-     usuario : {},
-     alergia : {}
-   };
-
-    this.id = window.sessionStorage.getItem('auth-username');
-    this.userServices.ubicaUsuarioPorId(this.id)
-      .subscribe(
-        dato => {
-        registros.usuario = dato;
-        console.log(dato);
-       //this.tienen.alergia = 2;
-        /*this.restServ.ubicaporIdAlergias(this.tienen.alergia)
-           .subscribe(
-            datos => {
-            console.log(datos);
-            registros.alergia = datos;
-            console.log(datos);*/
-            this.restServ.agregaElementoTieneAlergia(registros)
-              .subscribe(
-                data => {
-                console.log(registros);
-                 // console.log(data);
-                  //this.agregado = true;
-
-                this.restServ.getListaTieneAlergia()
-                    .subscribe(
-                      response => {
-                        let alerg : Array <any> | any = response;
-                        let aler = alerg[alerg.length-1];
-
-                        for(const alergi of this.alergys) {
-                          this.restServ.agregaElementoAlergias({aler, alergi})
-                            .subscribe(
-                              respuesta => {
-                                this.agregado = true;
-                                },
-                              error => {
-                                console.log(error);
-                              }
-                            )
-                        }
-                      }
-                    )
-
-                  },
-                  error => {
-                    console.log(error);
-                  }
-             // );
-             // }
-            );
-        }
-     );
- }
-
- nuevoValor() : void {
-   this.agregado = false;
-   this.tienen = {
-     usuario : '',
-     alergia : ''
-   }
- }
+      );
+    }
+  }
 
 }
