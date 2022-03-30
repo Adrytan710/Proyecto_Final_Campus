@@ -143,28 +143,78 @@ Por último, el usuario dispone de la opció. 'LogOut' para salir de la aplicaci
 
 <div align="center"><img src="img/logout.PNG"></div>
 
-<h4>Administrador :</h4>
-<h6>Vistas administrador </h6>
+<h4 id="admin">Administrador :</h4>
 
+
+- Enunciado :
+
+Uno de los administradores de la aplicación desea editar, ver, agregar y eliminar registros del comedor para hacer limpieza del sitio.
+
+Luego de auténticarse como 'Administrador', dispondrá de las vistas dispuestas exclusivamente para su rol.
+
+- Home
+- Nueva Orden
+- Ver Ordenes
+- Alergias
+- Usuarios
+- Platos
+- Roles
+- Perfil
+- Salir
+
+<h6>Vistas administrador </h6>
 <div align="center"><img src="img/vistaAdmin.PNG"></div>
 <h6>Editar catálogo de platos </h6>
 
+Considerando qeu desea filtrar como administrador, para editar el catálogo de platos, se ha de ubicar en las secciones del menú y seleccionar.
+
+Una vez seleccionada la opción nos imprime un panel exclusivamente administrativo con las opciones dispuestas para 
+
+- Agregar
+- Eliminar
+- Editar
+
+Selecciona la que le interese.
+
 <div align="center"><img src="img/editaPlato1.PNG"></div>
+
+- Actualizar plato
+
+La opción de actualizar permitirá al administrador modificar el nombre del plato y la categoría del mismo.
 
 <div align="center"><img src="img/editarPlato2.PNG"></div>
 
+- Agregar plato
+
+Si el administrador desea agregar platos, solo ha de seleccionar la imágen y será enviado al panel donde deberá de indicar el nombre del plato y la categoría del mismo, luego de ello confirmará su elección.
+
 <div align="center"><img src="img/editaPlato3.PNG"></div>
 
+Comprobación de la adición de registro.
 <div align="center"><img src="img/editaPlato4.PNG"></div>
 <h6>Administrar catálogo de órdenes </h6>
 
+El administrador podrá acceder a las ordenes generadas por el usuario y ver sus registros, así como sus datos y detalles de la misma.
+
 <div align="center"><img src="img/orden1.PNG"></div>
+
+Al seleccionr el 'Detalle' de las ordenes, se le generará una vista con el detalle de la orden seleccionada, indicando :
+
+- Número de orden.
+- Usuario.
+- Fecha.
+- Platos : Código del plato, Nombre del plato, Categoría del plato.
 
 <div align="center"><img src="img/orden2.PNG"></div>
 <h6>Administración de Usuarios</h6>
 
+
+De igual forma, podrá gestionar a los usuarios, agregando u eliminado según lo necesite.
+
 <div align="center"><img src="img/usuario1.PNG"></div>
 <h6>Administración de Roles</h6>
+
+El administrador podrá gestionar los roles de la base de datos, agregando según el tipo de rol a representar : Administrador, quien tendrá la misma accesibilidad que él para gestionar y el rol de usuario, quién solo podrá hacer ordenes, editar perfil.
 
 <div align="center"><img src="img/rol.PNG"></div>
 </div> 
