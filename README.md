@@ -27,7 +27,8 @@ En la coyuntura actual provocada por el contexto del Coronavirus, una de las pro
 <ol>
     <li><a href="#tecnologias">Tecnologías</a></li>
     <li><a href="#aplicacion">Aplicación</a></li>
-    <li><a href="#casos">Casos de Uso</a></li>  
+    <li><a href="#casos">Casos de Uso</a> <ul><a href="#user">Usuario</a></ul><ul><a href="#admin">Administrador</a></ul></li>
+     
 </ol>
 
 <h2 style="font-family : Courier New; font-size : 25px;" id="tecnologias">Tecnologías : </h2>
@@ -85,7 +86,7 @@ Para la aplicación desde la cónsola
 <h2 style="font-family : Courier New; font-size : 25px;" id="casos">Casos de Uso : </h2>
 
 <div align="center"><img src="img/caso.png"></div>
-<h4>Usuario :</h4>
+<h4 style="font-family : Courier New; font-size : 25px;" id="user">Usuario :</h4>
 
 - Enunciado :
 
@@ -143,7 +144,7 @@ Por último, el usuario dispone de la opció. 'LogOut' para salir de la aplicaci
 
 <div align="center"><img src="img/logout.PNG"></div>
 
-<h4 id="admin">Administrador :</h4>
+<h4 style="font-family : Courier New; font-size : 25px;" id="admin">Administrador :</h4>
 
 
 - Enunciado :
