@@ -35,6 +35,7 @@ En la coyuntura actual provocada por el contexto del Coronavirus, una de las pro
 <h4>Backend:</h4>
 <li>Java 8.</li>
 <li>MySql</li>
+<li>Postman</li>
 <li>SpringBoot 4.4.1</li>
 <li>Swagger 2.9.</li>
 <h4>Frontend:</h4>
@@ -42,6 +43,12 @@ En la coyuntura actual provocada por el contexto del Coronavirus, una de las pro
 <li>HTML5</li>
 <li>CSS3</li>
 <li>Bootstrap</li>
+<h4>Organización :</h4>
+<li>Trello</li>
+<li>GitHub</li>
+<h4>Despliegue :</h4>
+<li>Heroku, despliegue API (Backend)</li>
+<li>Amazon Web Services, despliegue de la aplicación (Frontend)</li>
 </ul>
 
 <h2 style="font-family : Courier New; font-size : 25px;" id="aplicacion">Aplicación : </h2>
@@ -79,18 +86,62 @@ Para la aplicación desde la cónsola
 
 <div align="center"><img src="img/caso.png"></div>
 <h4>Usuario :</h4>
+
+- Enunciado :
+
+<p>Un nuevo empleado desea ingresar por primera vez a la plataforma para realizar una orden del catálogo dispuesto.</p>
 <h6>Inicio sesión de Usuario </h6>
 
+- Ante todo el usuario deberá de ingresar a la plataforma con el usuario y la contraseña que se le ha asignado.
+
 <div align="center"><img src="img/ingreso.png"></div>
+
+<h4>Home :</h4>
+
+
+- Luego de autenticar su usuario e iniciar sesión, el usuario será dirigido al Homepage de la aplicación, desde donde podrá contemplar diferentes platos y generar una nueva orden, además de tener vistas a las opciones disponibles para el perfil usuario :
+
+- Nueva Orden.
+- Perfil.
+- LogOut.
+
+<div align="center"><img src="img/home.PNG"></div>
+
 <h6>Ver catálogo de platos </h6>
+
+- Para generar una petición, debemos de ubicar "Nueva Orden", donde seremos direccionados a los páneles de selección :
+
+Panel 'Elige tus platos'
+
+- Entrantes.
+- Primer plato.
+- Segundo plato.
+- Postre.
+
+Podremos indicar las opciones de nuestra preferencia, indicando cantidades o tipos de plato.
+
+Panel 'Categorias N°Platos seleccionados'
+
+El panel nos indicará las seleccionamos que realicemos tanto por categorias como por cantidades hasta que realicemos la orden.
 
 <div align="center"><img src="img/ordenes.PNG"></div>
 <h6>Realizar un pedido </h6>
+
+- Una vez el usuario se decida a ordenar, será direccionado a la vista de confirmación de la orden.
+
 <div align="center"><img src="img/ordenUsuario.PNG"></div>
 
 <h6>Editar perfil</h6>
 
+- Otra de los recursos disponibles para el usuario, será la personalización de su perfil, con la posibilidad de indicar o no si dspone de alguna disposición especial en sus elecciones, específicamente sus alergias a los alimentos.
+
 <div align="center"><img src="img/perfilUser.PNG"></div>
+
+<h6>LogOut</h6>
+
+Por último, el usuario dispone de la opció. 'LogOut' para salir de la aplicación una vez generada la orden u editado su perfil.
+
+<div align="center"><img src="img/logout.PNG"></div>
 
 <h4>Administrador :</h4>
 <h6>Vistas administrador </h6>
