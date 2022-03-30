@@ -36,6 +36,7 @@ En la coyuntura actual provocada por el contexto del Coronavirus, una de las pro
 <h4>Backend:</h4>
 <li>Java 8.</li>
 <li>MySql</li>
+<li>Postman</li>
 <li>SpringBoot 4.4.1</li>
 <li>Swagger 2.9.</li>
 <h4>Frontend:</h4>
@@ -43,11 +44,20 @@ En la coyuntura actual provocada por el contexto del Coronavirus, una de las pro
 <li>HTML5</li>
 <li>CSS3</li>
 <li>Bootstrap</li>
+<h4>Organización :</h4>
+<li>Trello</li>
+<li>GitHub</li>
+<h4>Despliegue :</h4>
+<li>Heroku, despliegue API (Backend)</li>
+<li>Amazon Web Services, despliegue de la aplicación (Frontend)</li>
 </ul>
 
 <h2 style="font-family : Courier New; font-size : 25px;" id="aplicacion">Aplicación : </h2>
+   
 
 <h3 style="font-family : Courier New; font-size : 18px;" id="aplicacion">Despliegue desde la Web: </h3>
+
+- El despliegue de la aplicación para Backend consta de la base de datos con la arquitectura funcional de la API en HEROKU y que responderá a todos los Endpoints del Frontend.
 
 - Proyecto desplegado en Amazon WebServices :
 
@@ -59,14 +69,19 @@ En la coyuntura actual provocada por el contexto del Coronavirus, una de las pro
 <h2 style="font-family : Courier New; font-size : 25px;" id="api">Documentación API : </h2>
 
 - https://reserva-restaurant-fe-jai.herokuapp.com/swagger-ui.html
-
+    
+ Recoge todos los Endpoints de la API.
 
 <h2 style="font-family : Courier New; font-size : 25px;" id="modelo">Modelo Relacional : </h2>
+    
+ El modelo relacional que consideramos óptimo para el proyecto lo constituyen las siguientes Entidades y Relaciones.
 
 <div align="center"><img src="modeloRelacional/modelos.PNG"></div>
 
 
 <h3 style="font-family : Courier New; font-size : 20px;" >Resultado despliegue MySql : </h3>
+    
+Implementación del modelo relacional en MySQL.
 
 <div align="center"><img src="modeloRelacional/reverse.PNG"></div>
 
