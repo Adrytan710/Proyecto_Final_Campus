@@ -12,6 +12,7 @@ export class AddRolComponent implements OnInit {
     nombre : ''
   };
   agregado = false;
+  enviar = false;
 
   constructor(private apiService : ApiRestService) { }
 
@@ -19,6 +20,7 @@ export class AddRolComponent implements OnInit {
   }
 
   guardaRegistro() : void {
+    this.enviar = true;
     const data = {
       nombre : this.rol.nombre
     };
@@ -28,6 +30,7 @@ export class AddRolComponent implements OnInit {
         respuesta => {
           console.log(respuesta);
           this.agregado = true;
+          this.enviar = false;
         },
         error => {
           console.log(error);

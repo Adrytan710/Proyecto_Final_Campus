@@ -16,6 +16,7 @@ export class UpdatePlatoComponent implements OnInit {
   };
   categorias: any = null;
   agregado = false;
+  enviar = false;
 
   constructor(private apiService : ApiRestService, private _route: ActivatedRoute) { }
 
@@ -44,6 +45,7 @@ export class UpdatePlatoComponent implements OnInit {
   }
 
   guardaRegistro() : void {
+    this.enviar = true;
     const datos = {
       nombre : this.plato.nombre,
       categoria: {}
@@ -58,6 +60,7 @@ export class UpdatePlatoComponent implements OnInit {
           respuesta => {
             console.log(respuesta);
             this.agregado = true;
+            this.enviar = false;
           },
           error => {
             console.log(error);

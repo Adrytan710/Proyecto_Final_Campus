@@ -15,6 +15,7 @@ export class UpdateRolComponent implements OnInit {
   };
   recogidaDatos = false;
   actualizado = false;
+  enviar = false;
 
   constructor(private apiService : ApiRestService, private route : ActivatedRoute) { }
 
@@ -28,6 +29,7 @@ export class UpdateRolComponent implements OnInit {
   }
 
   actualizaRegistro() : void {
+    this.enviar = true;
     const data = {
       id : this.rol.id,
       nombre : this.rol.nombre
@@ -36,6 +38,8 @@ export class UpdateRolComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.enviar = false;
+          this.actualizado = true;
         },
         error => {
           console.log(error);

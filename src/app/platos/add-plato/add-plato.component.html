@@ -19,7 +19,7 @@
             Rol no puede estar vacio!
           </div>
         </div>
-        <button class="btn btn-success" type="submit">Agregar Plato</button>
+        <button class="btn btn-success" type="submit">Agregar Plato <i *ngIf="enviar" class="fas fa-spinner fa-spin"></i></button>
       </form>
     </div>
     <div *ngIf="agregado">

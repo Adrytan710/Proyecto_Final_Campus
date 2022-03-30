@@ -1,20 +1,22 @@
 <div class="container">
   <button [routerLink]="['../']" class="btn btn-primary">Volver</button>
   <div class="submit-form w-75 mx-auto">
-    <div *ngIf="recogidaDatos else espera || !actualizado">
-      <form name="form" (ngSubmit)="f.form.valid && actualizaRegistro()" #f="ngForm" novalidate>
-        <div class="form-floating mb-4">
-          <input type="text" name="nombre" id="floatingNombre" class="form-control" [class.is-invalid]="nombre.errors && f.submitted" [(ngModel)]="rol.nombre" required #nombre="ngModel"/>
-          <label for="floatingNombre">Nombre Rol</label>
-          <div id="floatingNombre" class="invalid-feedback">
-            Nombre Rol no puede estar vacio!
+    <div *ngIf="!actualizado">
+      <div *ngIf="recogidaDatos else espera">
+        <form name="form" (ngSubmit)="f.form.valid && actualizaRegistro()" #f="ngForm" novalidate>
+          <div class="form-floating mb-4">
+            <input type="text" name="nombre" id="floatingNombre" class="form-control" [class.is-invalid]="nombre.errors && f.submitted" [(ngModel)]="rol.nombre" required #nombre="ngModel"/>
+            <label for="floatingNombre">Nombre Rol</label>
+            <div id="floatingNombre" class="invalid-feedback">
+              Nombre Rol no puede estar vacio!
+            </div>
           </div>
-        </div>
-        <button class="btn btn-success" type="submit">Actualizar Rol</button>
-      </form>
+          <button class="btn btn-success" type="submit">Actualizar Rol <i *ngIf="enviar" class="fas fa-spinner fa-spin"></i></button>
+        </form>
+      </div>
     </div>
     <div *ngIf="actualizado">
-      <h4>Rol añadido correctamente</h4>
+      <h4>Rol actualizado correctamente</h4>
       <button (click)="actualizado = false" class="btn btn-success mt-3">Editar Rol</button>
     </div>
     <ng-template #espera>Esperando datos...</ng-template>

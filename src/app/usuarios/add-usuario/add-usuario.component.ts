@@ -17,6 +17,7 @@ export class AddUsuarioComponent implements OnInit {
   };
   roles: any = null;
   agregado = false;
+  enviar = false;
 
   constructor(private apiService : UsersService, private api : ApiRestService) { }
 
@@ -33,6 +34,7 @@ export class AddUsuarioComponent implements OnInit {
   }
 
   guardaRegistro() : void {
+    this.enviar = true;
     const datos = {
       usuario : this.usuario.nombre,
       pass_usuario : this.usuario.pass_usuario,
@@ -47,6 +49,7 @@ export class AddUsuarioComponent implements OnInit {
           respuesta => {
             console.log(respuesta);
             this.agregado = true;
+            this.enviar = false;
           },
           error => {
             console.log(error);

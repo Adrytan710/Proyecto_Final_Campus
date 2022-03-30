@@ -20,11 +20,8 @@
         </div>
       </div>
       <div class="w-25 mx-auto">
-        <button (click)="guardaNuevoRegistro()" class="boton btn btn-success mt-5">Enviar datos</button>
+        <button (click)="guardaNuevoRegistro()" class="boton btn btn-success mt-5">Enviar datos <i *ngIf="datosEnviados" class="fas fa-spinner fa-spin"></i></button>
       </div>
-    </div>
-    <div *ngIf="datosEnviados" class="mt-5">
-      <h4>Datos Enviados....</h4>
     </div>
     <div *ngIf="datosGuardados" class="mt-5">
       <h4>Datos Actualizados Correctamente</h4>

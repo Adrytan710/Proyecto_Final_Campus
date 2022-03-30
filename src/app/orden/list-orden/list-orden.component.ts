@@ -29,7 +29,7 @@ export class ListOrdenComponent implements OnInit {
 
   eliminar(id: string)
   {
-    this.api.eliminaElementoRol(id).subscribe(
+    this.api.eliminaElementoOrden(id).subscribe(
       data =>
       {
         this.getOrdenes();

@@ -14,6 +14,7 @@ export class UpdateAlergiaComponent implements OnInit {
   };
   recogidaDatos = false;
   actualizado = false;
+  enviar = false;
 
   constructor(private alergiaservice : ApiRestService, private route : ActivatedRoute) { }
 
@@ -27,6 +28,7 @@ export class UpdateAlergiaComponent implements OnInit {
   }
 
   actualizaRegistro() : void {
+    this.enviar = true;
     const data = {
       id : this.alergia.id,
       nombre : this.alergia.nombre
@@ -34,7 +36,8 @@ export class UpdateAlergiaComponent implements OnInit {
     this.alergiaservice.actualizaRegistroAlergias(data.id, data)
       .subscribe(
         response => {
-          console.log(response);
+          this.actualizado = true;
+          this.enviar = false;
         },
         error => {
           console.log(error);

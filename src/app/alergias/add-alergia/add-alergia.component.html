@@ -11,12 +11,12 @@
             Nombre Alergia no puede estar vacio!
           </div>
         </div>
-        <button class="btn btn-success" type="submit">Agregar Alergia</button>
+        <button class="btn btn-success" type="submit">Añadir Alergia <i *ngIf="enviar" class="fas fa-spinner fa-spin"></i></button>
       </form>
     </div>
     <div *ngIf="agregado">
       <h4>Alergia añadida correctamente</h4>
-      <button (click)="nuevoRegistro()" class="btn btn-success mt-3">Nueva Alergia</button>
+      <button (click)="nuevoRegistro()" class="btn btn-success mt-3">Añadir Nueva Alergia</button>
     </div>
   </div>
 </div>

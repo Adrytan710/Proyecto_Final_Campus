@@ -13,6 +13,7 @@ export class AddAlergiaComponent implements OnInit {
     nombre : ''
   };
   agregado = false;
+  enviar = false;
 
   constructor(private alergiaServices : ApiRestService) { }
 
@@ -20,6 +21,7 @@ export class AddAlergiaComponent implements OnInit {
   }
 
   guardaRegistro() : void {
+    this.enviar = true;
     const data = {
       nombre : this.alergia.nombre
     };
@@ -29,6 +31,7 @@ export class AddAlergiaComponent implements OnInit {
         respuesta => {
           console.log(respuesta);
           this.agregado = true;
+          this.enviar = false;
         },
         error => {
           console.log(error);

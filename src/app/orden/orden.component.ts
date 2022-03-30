@@ -20,6 +20,9 @@ export class OrdenComponent implements OnInit {
   };
   platosEnviar: Array<any> = [];
   peticionEnviada = false;
+  enviar = false;
+  arrayVacio = false;
+  ordenFin: any;
 
   constructor(private api: ApiRestService, private apiUsuario: UsersService) {}
 
@@ -45,6 +48,7 @@ export class OrdenComponent implements OnInit {
 
   addPlato(plato: any)
   {
+    this.arrayVacio = false;
     const id = plato.id;
 
     if(this.formCheckbox[id-1])
@@ -108,49 +112,60 @@ export class OrdenComponent implements OnInit {
 
   enviarDatos()
   {
-    const data = {
-      fecha: new Date(),
-      usuario: ''
-    };
+    if(this.platosEnviar.length != 0)
+    {
+      this.enviar = true;
+      const data = {
+        fecha: new Date(),
+        usuario: ''
+      };
 
-    let username: any = window.sessionStorage.getItem('auth-username');
+      let username: any = window.sessionStorage.getItem('auth-username');
 
-    this.apiUsuario.getUsuario(username)
-    .subscribe(
-      res => {
-        data.usuario = res;
+      this.apiUsuario.getUsuario(username)
+      .subscribe(
+        res => {
+          data.usuario = res;
 
-        this.api.agregaElementoOrden(data)
-        .subscribe(
-          rest => {
-            this.api.getListaOrden().subscribe(
-              rest2 => {
-                let ordenes: Array<any> | any  = rest2;
-                let orden = ordenes[ordenes.length-1];
+          this.api.agregaElementoOrden(data)
+          .subscribe(
+            rest => {
+              this.api.getListaOrden().subscribe(
+                rest2 => {
+                  let ordenes: Array<any> | any  = rest2;
+                  let orden = ordenes[ordenes.length-1];
 
-                for (const plato of this.platosEnviar)
-                {
-                  this.api.agregaElementoPeticion({orden, plato})
-                  .subscribe(
-                    resultado => {
-                      this.peticionEnviada = true;
-                    },
-                    error => {
-                      console.log(error.message);
-                    }
-                  );
+                  for (const plato of this.platosEnviar)
+                  {
+                    this.api.agregaElementoPeticion({orden, plato})
+                    .subscribe(
+                      resultado => {
+                        this.peticionEnviada = true;
+                        this.enviar = false;
+                      },
+                      error => {
+                        console.log(error.message);
+                      }
+                    );
+                  }
+
+                  this.ordenFin = orden;
+                },
+                error => {
+                  console.log(error.message);
                 }
-              },
-              error => {
-                console.log(error.message);
-              }
-            );
-          },
-          error => {
-            console.log(error.message);
-          }
-        );
-      }
-    );
+              );
+            },
+            error => {
+              console.log(error.message);
+            }
+          );
+        }
+      );
+    }
+    else
+    {
+      this.arrayVacio = true;
+    }
   }
 }

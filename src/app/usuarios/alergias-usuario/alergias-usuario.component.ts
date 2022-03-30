@@ -105,29 +105,29 @@ export class AlergiasUsuarioComponent implements OnInit {
         respuesta => {
           this.datosGuardados = true;
           this.datosEnviados = false;
-          //for (const alergiaAnterior of this.tieneAlergias)
-          //{
-          //  let estaAlergia = false;
-          //  for (const alergi of this.alergiasEnviar)
-          //  {
-          //    if(alergi.id == alergiaAnterior.id)
-          //    {
-          //      estaAlergia = true;
-          //    }
-          //  }
-          //  if(!estaAlergia)
-          //  {
-          //    this.restServ.eliminaElementoTieneAlergia(alergiaAnterior.id)
-          //    .subscribe(
-          //      data => {
-          //        console.log(data);
-          //      },
-          //      error => {
-          //        console.log(error);
-          //      }
-          //    );
-          //  }
-          //}
+          for (const alergiaAnterior of this.tieneAlergias)
+          {
+            let estaAlergia = false;
+            for (const alergi of this.alergiasEnviar)
+            {
+              if(alergi.id == alergiaAnterior.id)
+              {
+                estaAlergia = true;
+              }
+            }
+            if(!estaAlergia)
+            {
+              this.restServ.eliminaElementoTieneAlergia(alergiaAnterior.id)
+              .subscribe(
+                data => {
+                  console.log(data);
+                },
+                error => {
+                  console.log(error);
+                }
+              );
+            }
+          }
         },
         error => {
           console.log(error);

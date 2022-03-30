@@ -38,6 +38,7 @@ export class UsuariosComponent implements OnInit {
       error =>
       {
         console.log(error.message);
+        this.getUsuarios();
       }
     );
   }

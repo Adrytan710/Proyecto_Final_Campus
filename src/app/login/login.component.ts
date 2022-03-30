@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
     password: ''
   };
   isLoggedIn = false;
+  isLoggin = false;
   isLoginFailed = false;
   errorMessage = '';
   msg = '';
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   logUser(): void {
+    this.isLoggin = true;
     this.usersService.login(this.login.username, this.login.password)
       .subscribe(
         response => {
@@ -39,11 +41,13 @@ export class LoginComponent implements OnInit {
           window.sessionStorage.setItem("auth-username", this.login.username);
 
           this.isLoginFailed = false;
+          this.isLoggin = false;
           this.isLoggedIn = true;
 
           this.recogerRol();
         },
         error => {
+          this.isLoggin = false;
           this.isLoginFailed = true;
           if("Http failure response for https://reserva-restaurant-fe-jai.herokuapp.com/login: 403 OK" == error.message)
           {
